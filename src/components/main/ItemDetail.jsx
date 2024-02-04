@@ -2,18 +2,22 @@ import { useState } from "react";
 import ItemCount from "./ItemCount"
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-
+import { useContext } from "react";
+import { Context } from "../../App";
 
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {
+
+    const {setCart} = useContext()
+
     // const [inputType, setInputType] = useState('input')
     const [quantity, setQuantity] = useState(0)
     
     // const ItemCount = inputType === 'input' ? Input : ButtonCount
     
     const handleOnAdd = (count) => {
-        // const prodctToAdd = {
-        //     id, name, price, count
-        // }
+        const productToAdd = {
+            id, name, price, count
+        }
         console.log(`se agregaron ${count} ${name}`)
 
         setQuantity(count)
@@ -30,9 +34,9 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroup.Item>{category}</ListGroup.Item>
-                    <ListGroup.Item>Free Shipping</ListGroup.Item>
-                    <ListGroup.Item>$ {price}</ListGroup.Item>
+                    <ListGroup.Item>Categoria: {category}</ListGroup.Item>
+                    <ListGroup.Item>Envio: Free Shipping</ListGroup.Item>
+                    <ListGroup.Item>Precio $ {price}</ListGroup.Item>
                 </ListGroup>
                 <Card.Body>
                 {

@@ -3,15 +3,15 @@
 const products = [
     {
         id:'1',
-        name:'surftrainer',
+        name:'surftrainer Surfclub',
         price:15000,
         category:'tabla',
         img:'http://placekitten.com/200/300',
         stock: 18,
-        description:'Tabla balanceboard surf'
+        description:'Tabla de balanceboard surf, lo mejor para entrenar tu equilibrio'
     },
-    { id:'2', name:'futon ', price:13000, category:'sillon', img:'http://placekitten.com/200/300', stock: 18, description:'funton muy comodo'},
-    { id:'3', name:'heladera', price:17000, category:'heladera', img:'http://placekitten.com/200/300', stock: 12, description:'heladera que enfria'}
+    { id:'2', name:'futon ', price:13000, category:'sillon', img:'http://placekitten.com/200/300', stock: 18, description:'funton muy comodo en L ideal living, tela resistente'},
+    { id:'3', name:'samsung jk-24 heladera', price:17000, category:'heladera', img:'http://placekitten.com/200/300', stock: 12, description:'heladera que enfria mucho con frezzer y fabrica de hielo en la puerta'}
 ]
 
 const categories = [
