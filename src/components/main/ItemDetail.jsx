@@ -19,10 +19,11 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
         const productToAdd = {
             id, name, price, count
         }
-        alert(`se agregaron ${count} ${name}`)
+        console.log(`se agregaron ${count} ${name}`)
         addItem(productToAdd) // prev => [...prev, productToAdd]
         setQuantity(count)
     }
+
     
     // const cant = Context[0].price;
     // console.log(cant)
