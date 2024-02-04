@@ -3,6 +3,7 @@ import './App.css'
 import NavBar from './components/header/NavBar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ItemDetailContainer from './components/main/ItemDetailContainer'
+import EventAnimation from './components/main/EventAnimation'
 
 function App() {
 
@@ -13,9 +14,9 @@ function App() {
         <Routes>
           <Route path='/' element={<ItemListContainer/>} />          
           <Route path='/category/:categoryId' element={<ItemListContainer/>} />
-          <Route path='/item/:productId' element={<ItemDetailContainer/>} />          
-
+          <Route path='/item/:productId' element={<ItemDetailContainer/>} />
         </Routes>
+        <EventAnimation/>
       </BrowserRouter>
     </>
   )

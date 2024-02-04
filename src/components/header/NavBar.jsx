@@ -1,21 +1,36 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { getCategories } from '../../mocks/asyncMock';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
+
+    const [categories, setCategories] = useState([])
+
+    useEffect(()=>{
+        getCategories()
+            .then(response => {
+                setCategories(response)
+                
+        })
+    },[])
+
     return (
         <>
-        <Navbar bg="dark" data-bs-theme="dark">
-            <Container>
-                <Navbar.Brand href="#home">LautaroLIBRE</Navbar.Brand>
-                <Nav className="me-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">Features</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
-    
+            <Navbar bg="dark" data-bs-theme="dark">
+                <Container>
+                    <Navbar.Brand href="/">LautaroLIBRE</Navbar.Brand>
+                    <Nav className="me-auto">
+                        {categories.map(cat =>{
+                            return (
+                                <Link className="btn btn-warning m-1" key={cat.id} to={`/category/${cat.slug}`}>{cat.description}</Link>
+                            )
+                        })}
+                    </Nav>
+                </Container>
+            </Navbar>
         </>
     );
 }

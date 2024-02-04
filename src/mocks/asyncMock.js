@@ -4,21 +4,35 @@ const products = [
     {
         id:'1',
         name:'surftrainer',
-        price:'15000',
+        price:15000,
         category:'tabla',
         img:'http://placekitten.com/200/300',
-        stock:'18',
+        stock: 18,
         description:'Tabla balanceboard surf'
     },
-    { id:'2', name:'snowdeck ', price:'13000', category:'tabla', img:'http://placekitten.com/200/300', stock:'18', description:'Tabla balanceboard snow'},
-    { id:'3', name:'heladera', price:'17000', category:'heladera', img:'http://placekitten.com/200/300', stock:'12', description:'heladera que enfria'}
+    { id:'2', name:'futon ', price:13000, category:'sillon', img:'http://placekitten.com/200/300', stock: 18, description:'funton muy comodo'},
+    { id:'3', name:'heladera', price:17000, category:'heladera', img:'http://placekitten.com/200/300', stock: 12, description:'heladera que enfria'}
 ]
+
+const categories = [
+    {id: '1', description: 'Tablas', slug: 'tabla'},
+    {id: '2', description: 'Sillones', slug: 'sillon'},
+    {id: '3', description: 'Heladeras', slug: 'heladera'},
+]
+
+export const getCategories = () => {
+    return new Promise( (resolve) => {
+        setTimeout( () => {
+            resolve(categories)
+        }, 1000)
+    })
+}
 
 export const getProducts = () => {
     return new Promise( (resolve) => {
         setTimeout( () => {
             resolve(products)
-        }, 2000)
+        }, 1000)
     })
 }
 
@@ -26,7 +40,7 @@ export const getProductsByCategory = (categoryId) => {
     return new Promise((resolve)=>{
         setTimeout(() => {
             resolve(products.filter(prod => prod.category === categoryId))
-        }, 1500)
+        }, 1000)
     })
 }
 

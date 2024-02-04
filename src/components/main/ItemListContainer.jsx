@@ -19,7 +19,7 @@ const { categoryId } = useParams()
     useEffect(()=>{
         
         const asyncFunction = categoryId ? getProductsByCategory : getProducts
-
+        setLoading(true)
         asyncFunction(categoryId)            
             .then(response => {
                 setProducts(response) 
@@ -38,8 +38,8 @@ const { categoryId } = useParams()
                 <ClipLoader size={300} color={"#ffff00"} loading={loading} />
                 <h2 className=" m-2"> L o a d i n g  .   .   . </h2>                
             </div>
-    )}
-            
+    )}   
+    
     return (
         <div >
             {/* <input value={input} onChange={(e)=> setInput(e.target.value)} className="m-5" /> */}

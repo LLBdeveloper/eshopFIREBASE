@@ -1,8 +1,8 @@
-// import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 
-const Item = ({ name, img, price}) => {
+const Item = ({ id, name, img, price}) => {
 
 
     return (
@@ -12,7 +12,7 @@ const Item = ({ name, img, price}) => {
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>$ {price}</Card.Text>
 
-                <button className="btn btn-warning">BUY</button>
+                <Link className="btn btn-warning" to={`/item/${id}`} >Buy</Link>
 
             </Card.Body>
         </Card>
