@@ -3,15 +3,16 @@ import './App.css'
 import NavBar from './components/header/NavBar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ItemDetailContainer from './components/main/ItemDetailContainer'
-import EventAnimation from './components/main/EventAnimation'
+// import EventAnimation from './components/main/EventAnimation'
 import { createContext, useState } from 'react'
 
 export const Context = createContext('valor inicial')
 
 function App() {
   const [cart, setCart] = useState([])
-console.log(cart)
-
+  setTimeout(()=>{
+    console.log(cart)
+}, 4000)
   return (
     <>
     <Context.Provider value={{cart, setCart}}>
@@ -24,7 +25,7 @@ console.log(cart)
             <Route path='/cart' element={'asd'} />
             <Route path='/checkout' element={'asd'} />
           </Routes>
-          <EventAnimation/>
+          {/* <EventAnimation/> */}
         </BrowserRouter>
       </Context.Provider>
     </>

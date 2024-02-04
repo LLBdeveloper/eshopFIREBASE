@@ -7,7 +7,7 @@ import { Context } from "../../App";
 
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {
 
-    const {setCart} = useContext()
+    const {setCart} = useContext(Context)
 
     // const [inputType, setInputType] = useState('input')
     const [quantity, setQuantity] = useState(0)
@@ -18,8 +18,8 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
         const productToAdd = {
             id, name, price, count
         }
-        console.log(`se agregaron ${count} ${name}`)
-
+        // console.log(`se agregaron ${count} ${name}`)
+        setCart(prev => [...prev, productToAdd])
         setQuantity(count)
     }
 
