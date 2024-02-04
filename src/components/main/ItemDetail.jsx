@@ -5,9 +5,10 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { useContext } from "react";
 import { Context } from "../../App";
 
+
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {
 
-    const {setCart} = useContext(Context)
+    const {addItem} = useContext(Context)
 
     // const [inputType, setInputType] = useState('input')
     const [quantity, setQuantity] = useState(0)
@@ -18,10 +19,14 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
         const productToAdd = {
             id, name, price, count
         }
-        // console.log(`se agregaron ${count} ${name}`)
-        setCart(prev => [...prev, productToAdd])
+        alert(`se agregaron ${count} ${name}`)
+        addItem(productToAdd) // prev => [...prev, productToAdd]
         setQuantity(count)
     }
+    
+    // const cant = Context[0].price;
+    // console.log(cant)
+
 
     return (
         <Card key={id} style={{ width: '18rem', margin: '3rem' }}>
