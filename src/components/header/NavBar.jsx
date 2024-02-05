@@ -23,13 +23,13 @@ function NavBar() {
             <Navbar bg="dark" data-bs-theme="dark">
                 <Container>
                     <Navbar.Brand href="/">LautaroLIBRE</Navbar.Brand>
-                    <Nav className="me-auto">
+                    <Nav className="me-auto p-2">
                         {categories.map(cat =>{
                             return (
-                                <Link className="btn btn-warning m-1" key={cat.id} to={`/category/${cat.slug}`}>{cat.description}</Link>
+                                <Link className="btn btn-warning m-1 " key={cat.id} to={`/category/${cat.slug}`}>{cat.description}</Link>
                             )
                         })}
-                        <CartWidget/>
+                        <Link to='/cart'  ><CartWidget/></Link>
                     </Nav>
                 </Container>
             </Navbar>

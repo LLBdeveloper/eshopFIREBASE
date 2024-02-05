@@ -8,7 +8,7 @@ const CartWidget = () => {
     
 
     return (
-        <div to='/cart' className='CartWidget text-danger fw-bold bg-white' >
+        <div to='/cart' className='CartWidget text-warning fw-bold bg-white rounded' >
             <img src='https://w7.pngwing.com/pngs/833/426/png-transparent-shopping-cart-icon-shopping-cart-black-design-trade-thumbnail.png' alt="carritoIcono" className='CartImg'/>
             <span className='m-3' >{totalQuantity}</span>
         </div>
@@ -16,3 +16,4 @@ const CartWidget = () => {
 }
 
 export default CartWidget
+

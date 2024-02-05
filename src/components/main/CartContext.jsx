@@ -5,9 +5,9 @@ const CartContext = createContext('valor inicial')
 export const CartProvider = ({children}) => {
 
     const [cart, setCart] = useState([])
-    //   setTimeout(()=>{
-    //     console.log(cart)
-    // }, 3000)
+      setTimeout(()=>{
+        console.log(cart)
+    }, 3000)
     
     const addItem = (productToAdd) =>{
     if(!isInCart(productToAdd.id)){

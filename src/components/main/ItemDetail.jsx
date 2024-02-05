@@ -1,35 +1,30 @@
-import { useState } from "react";
+// import { useState } from "react";
 import ItemCount from "./ItemCount"
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useCart } from "./CartContext";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { NotificationContext } from "../../App";
 
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {
 
     const {addItem, isInCart} = useCart()
+    const {setNotification} = useContext(NotificationContext)
 
-    // const [inputType, setInputType] = useState('input')
-    const [quantity, setQuantity] = useState(0)
-    
-    // const ItemCount = inputType === 'input' ? Input : ButtonCount
-    
     const handleOnAdd = (count) => {
         const productToAdd = {
             id, name, price, count
         }
         console.log(`se agregaron ${count} ${name}`)/
-        addItem(productToAdd) // prev => [...prev, productToAdd]
-        setQuantity(count)
-    }
+        addItem(productToAdd) 
+        setNotification(`success','Se agrego correctamente ${count} ${name}`)
 
-    
-    // const cant = Context[0].price;
-    // console.log(cant)
+    }
 
 
     return (
         <Card key={id} style={{ width: '18rem', margin: '3rem' }}>
-                {/* <button onClick={()=> setInputType(inputType === 'input' ? 'buton' : 'input')} >cambiar contador</button> */}
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
@@ -44,13 +39,11 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
                 </ListGroup>
                 <Card.Body>
                 {
-                quantity === 0 ? ( <ItemCount stock={stock} initial={1} onAdd={handleOnAdd}/>
-                ) :(
-                    <button className="btn btn-warning">FINALIZAR COMPRA</button>
-                )
+                    isInCart(id) ?  ( <Link to='/cart' className="btn btn-warning">FINALIZAR COMPRA </Link>
+                    ):( <ItemCount stock={stock} initial={1} onAdd={handleOnAdd}/>
+                    )
                 }
                 </Card.Body>
-                
             </Card>
     )
 }
