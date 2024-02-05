@@ -14,9 +14,9 @@ export const NotificationContext = createContext()
 
 const Notification = ({type, message}) =>{
     const notificationStyle = {
-      position: 'aboslute',
-      top: 100,
-      rigth: 50,
+      // position: 'absolute',
+      // top: 100,
+      // right: 50,
       backgroundColor: type === 'success' ? 'green' : 'red',
       color: 'white',
       padding: '10px 20px 10px 20px',
@@ -39,7 +39,7 @@ function App() {
   
   const [notificationData, setNotificationData] = useState({
     type: 'success',
-    text: 'Esto  es un mensaje en el estado'
+    text: 'Bienvenido'
   })
 
   const setNotification = (type, text) => {
@@ -52,9 +52,9 @@ function App() {
     <>
         <BrowserRouter>
         <NotificationContext.Provider value={{setNotification}} >
-                        <Notification  type={notificationData.type} message={notificationData.text} />
           <CartProvider>
             <NavBar/>
+                        <Notification  type={notificationData.type} message={notificationData.text} />
             <Routes>
               <Route path='/' element={<ItemListContainer/>} />          
               <Route path='/category/:categoryId' element={<ItemListContainer/>} />

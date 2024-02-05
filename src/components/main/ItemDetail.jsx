@@ -12,13 +12,13 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
     const {addItem, isInCart} = useCart()
     const {setNotification} = useContext(NotificationContext)
 
-    const handleOnAdd = (count) => {
+    const handleOnAdd = (quantity) => {
         const productToAdd = {
-            id, name, price, count
+            id, name, price, quantity
         }
-        console.log(`se agregaron ${count} ${name}`)/
+        console.log(`se agregaron ${quantity} ${name}`)/
         addItem(productToAdd) 
-        setNotification(`success','Se agrego correctamente ${count} ${name}`)
+        setNotification('success',`Se agrego correctamente ${quantity} ${name}`)
 
     }
 

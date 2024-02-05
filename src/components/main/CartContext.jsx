@@ -5,7 +5,7 @@ const CartContext = createContext('valor inicial')
 export const CartProvider = ({children}) => {
 
     const [cart, setCart] = useState([])
-      setTimeout(()=>{
+    setTimeout(()=>{
         console.log(cart)
     }, 3000)
     
@@ -32,7 +32,7 @@ export const CartProvider = ({children}) => {
         let totalQuantity = 0
 
         cart.forEach(prod => {
-            totalQuantity += prod.count
+            totalQuantity += prod.quantity
         })
         return totalQuantity
     }
