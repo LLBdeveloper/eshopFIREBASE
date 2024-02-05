@@ -2,13 +2,11 @@ import { useState } from "react";
 import ItemCount from "./ItemCount"
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { useContext } from "react";
-import { Context } from "../../App";
-
+import { useCart } from "./CartContext";
 
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {
 
-    const {addItem} = useContext(Context)
+    const {addItem, isInCart} = useCart()
 
     // const [inputType, setInputType] = useState('input')
     const [quantity, setQuantity] = useState(0)
@@ -19,7 +17,7 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
         const productToAdd = {
             id, name, price, count
         }
-        console.log(`se agregaron ${count} ${name}`)
+        console.log(`se agregaron ${count} ${name}`)/
         addItem(productToAdd) // prev => [...prev, productToAdd]
         setQuantity(count)
     }

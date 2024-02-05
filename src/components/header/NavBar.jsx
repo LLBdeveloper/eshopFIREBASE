@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { getCategories } from '../../mocks/asyncMock';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import CartWidget from '../main/CartWidget';
 
 function NavBar() {
 
@@ -28,6 +29,7 @@ function NavBar() {
                                 <Link className="btn btn-warning m-1" key={cat.id} to={`/category/${cat.slug}`}>{cat.description}</Link>
                             )
                         })}
+                        <CartWidget/>
                     </Nav>
                 </Container>
             </Navbar>
