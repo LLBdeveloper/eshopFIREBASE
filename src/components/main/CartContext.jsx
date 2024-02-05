@@ -10,10 +10,10 @@ export const CartProvider = ({children}) => {
     }, 3000)
     
     const addItem = (productToAdd) =>{
-    if(!isInCart(productToAdd.id)){
-        setCart(prev => [...prev, productToAdd])
-    } else {
-        alert('No se agrega por que ya esta en el carrito')
+        if(!isInCart(productToAdd.id)){
+            setCart(prev => [...prev, productToAdd])
+        } else {
+            alert('No se agrega por que ya esta en el carrito')
         }
     }
 

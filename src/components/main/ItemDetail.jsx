@@ -4,13 +4,16 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useCart } from "./CartContext";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { NotificationContext } from "../../App";
+
+import { useNotificacion } from "../../notification/NotificactionProvider";
 
 const ItemDetail = ({id, name, img, category, description, price, stock}) => {
 
     const {addItem, isInCart} = useCart()
-    const {setNotification} = useContext(NotificationContext)
+    const {setNotification} = useNotificacion()//se puede exportar el context pero esta hecho con customHooks// asi es del modo tradicional: useContext(NotificationContext) y eso arriba: import { NotificationContext } from "../../notification/NotificactionProvider"; import { useCart } from "./CartContext";
+
+
+
 
     const handleOnAdd = (quantity) => {
         const productToAdd = {
@@ -39,7 +42,7 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
                 </ListGroup>
                 <Card.Body>
                 {
-                    isInCart(id) ?  ( <Link to='/cart' className="btn btn-warning">FINALIZAR COMPRA </Link>
+                    isInCart(id) ?  ( <Link to='/checkout' className="btn btn-warning">FINALIZAR COMPRA </Link>
                     ):( <ItemCount stock={stock} initial={1} onAdd={handleOnAdd}/>
                     )
                 }

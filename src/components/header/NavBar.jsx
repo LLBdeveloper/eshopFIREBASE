@@ -22,14 +22,14 @@ function NavBar() {
         <>
             <Navbar bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="/">LautaroLIBRE</Navbar.Brand>
+                    <Link to="/" >LautaroLIBRE</Link>
                     <Nav className="me-auto p-2">
                         {categories.map(cat =>{
                             return (
                                 <Link className="btn btn-warning m-1 " key={cat.id} to={`/category/${cat.slug}`}>{cat.description}</Link>
                             )
                         })}
-                        <Link to='/cart'  ><CartWidget/></Link>
+                        <Link to='/cart'><CartWidget/></Link>
                     </Nav>
                 </Container>
             </Navbar>
