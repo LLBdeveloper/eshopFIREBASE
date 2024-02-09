@@ -5,11 +5,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ItemDetailContainer from './components/main/ItemDetailContainer'
 import NotificactionProvider from './notification/NotificactionProvider'
 import { CartProvider } from './components/main/CartContext'
-import CartModal from './components/main/Cart'
+import CartModal from './components/main/CartModal'
 
 
 function App() {
-  
+
   return (
     <>
       <BrowserRouter>

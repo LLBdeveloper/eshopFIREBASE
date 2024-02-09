@@ -1,6 +1,7 @@
 import './CartWidget.css'
 import { useCart } from './CartContext'
 import cart from '../../../public/icons/cart.svg';
+// import CartModal from './Cart'
 
 const CartWidget = () => {
     
@@ -8,7 +9,7 @@ const CartWidget = () => {
     
 
     return (
-        <div to='/cart' className='CartWidget text-warning fw-bold bg-white rounded' >
+        <div to='' className='CartWidget text-warning fw-bold bg-white rounded' >
             <img style={{
                 background: 'white',
                 padding: '10px'

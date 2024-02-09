@@ -13,9 +13,9 @@ const products = [
 ]
 
 const categories = [
-    {id: '1', description: 'Tablas', slug: 'tabla'},
-    {id: '2', description: 'Sillones', slug: 'sillon'},
-    {id: '3', description: 'Heladeras', slug: 'heladera'},
+    {id: '1', description: 'Boards', slug: 'tabla'},
+    {id: '2', description: 'Armchairs', slug: 'sillon'},
+    {id: '3', description: 'Refrigerators', slug: 'heladera'},
 ]
 
 export const getCategories = () => {
