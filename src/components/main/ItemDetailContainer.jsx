@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { getProductsById } from '../../mocks/asyncMock';
 import { ClipLoader } from "react-spinners";
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
-
+import { getDoc, doc} from 'firebase/firestore';
+import {db} from '../../services/firebase/firebaseConfig'
 
 function ItemDetailContainer() {
     const [product, setProduct] = useState({})
@@ -12,16 +12,23 @@ function ItemDetailContainer() {
     const { productId } = useParams()
 
     useEffect(() => {
-        getProductsById(productId)
-            .then(response => {
-                setProduct(response)
+        setLoading(true)
+
+        const productRef = doc(db, 'products', productId)
+        getDoc(productRef)
+            .then(snapshot => {
+                console.log(snapshot)
+                const data = snapshot.data()
+                const productAdapted = {id: snapshot.id, ...data}
+                setProduct(productAdapted)
             })
             .catch(error => {
                 console.log(error)
             })
-            .finally(()=>{
+            .finally(() =>{
                 setLoading(false)
             })
+
     },[productId])
     if(loading) {
         return (

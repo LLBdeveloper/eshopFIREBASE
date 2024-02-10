@@ -1,32 +1,37 @@
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
 import { ClipLoader } from "react-spinners";
-import { getProducts, getProductsByCategory } from "../../mocks/asyncMock";
 import { useParams } from "react-router-dom";
-
-
+import { getDocs, collection, query, where } from 'firebase/firestore'
+import { db } from '../../services/firebase/firebaseConfig' 
 
 function ItemListContainer() {
 
     const[products, setProducts] = useState([])
     const[loading, setLoading] = useState(true)
 
-
-
 const { categoryId } = useParams()
 
     useEffect(()=>{
-        
-        const asyncFunction = categoryId ? getProductsByCategory : getProducts
         setLoading(true)
-        asyncFunction(categoryId)            
-            .then(response => {
-                setProducts(response) 
-            })    
+        
+        const productsRef = categoryId 
+        ? query(collection(db, 'products'), where('category', '==', categoryId))
+        : collection(db, 'products')
+
+        getDocs(productsRef)
+            .then(snapshot =>{
+                console.log(snapshot)
+                const productsAdapted = snapshot.docs.map( doc => {
+                    const data = doc.data()
+                    return { id: doc.id, ...data}
+                })
+                setProducts(productsAdapted)
+            })
             .catch(error => {
                 console.log(error)
-            })    
-            .finally(()=>{
+            })
+            .finally(() => {
                 setLoading(false)
             })
     },[categoryId])
@@ -41,7 +46,6 @@ const { categoryId } = useParams()
     
     return (
         <div >
-            {/* <input value={input} onChange={(e)=> setInput(e.target.value)} className="m-5" /> */}
             <ItemList products={products}/>
         </div>
     )
