@@ -31,7 +31,6 @@ function NavBar() {
                             )
                         })}
                         <CartModal  />
-                        {/* <Link to=''></Link> */}
                     </Nav>
                 </Container>
             </Navbar>

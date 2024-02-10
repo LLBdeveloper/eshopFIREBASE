@@ -12,12 +12,13 @@ function CartModal() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const {cart} = useCart()
+    const {cart, removeItem} = useCart()
 
 
 
 
     console.log(cart)
+    const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
 
     return (
@@ -34,20 +35,26 @@ function CartModal() {
             >
                 <Modal.Header closeButton>
                     <Modal.Title>
-                        <p>SHOPPING CART</p>
+                        <h1>SHOPPING CART</h1>
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    <p>INFORMATION OF YOUR CART WITH DETAILS</p>
-                    <p>CANT    DETAIL        PRICE</p>
-                    <p>02-tabla balance board-$38500</p>
-
+                <Modal.Body className='bg-dark text-secondary'>
+                    <h2>INFORMATION OF YOUR CART WITH DETAILS</h2>
+                    {/* <p>CANT    DETAIL        PRICE</p> */}
+                    {cart.map(item => (
+                            <div key={item.id} className="border border-success mb-2 p-2">
+                                {item.name} - x{item.quantity} - ${item.price * item.quantity}
+                                <Button variant="danger" className="ms-2" onClick={() => removeItem(item.id)}>-</Button>
+                            </div>
+                    ))}
+                    <hr />
+                    <h3>TOTAL $ {total}</h3>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="success">
+                    <Button to='/checkout' variant="success">
                         Buy Now
                     </Button>
                 </Modal.Footer>
