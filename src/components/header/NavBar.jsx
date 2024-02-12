@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { getCategories } from '../../mocks/asyncMock';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import CartModal from '../main/CartModal';
+import CartModalContainer from '../main/CartModalContainer';
 // import CartWidget from '../main/CartWidget';
 
 function NavBar() {
@@ -30,7 +30,7 @@ function NavBar() {
                                 <Link className="btn btn-warning m-1 " key={cat.id} to={`/category/${cat.slug}`}>{cat.description}</Link>
                             )
                         })}
-                        <CartModal  />
+                        <CartModalContainer  />
                     </Nav>
                 </Container>
             </Navbar>

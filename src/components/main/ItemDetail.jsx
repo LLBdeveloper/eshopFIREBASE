@@ -13,17 +13,12 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
     const {addItem, isInCart} = useCart()
     const {setNotification} = useNotificacion()//se puede exportar el context pero esta hecho con customHooks// asi es del modo tradicional: useContext(NotificationContext) y eso arriba: import { NotificationContext } from "../../notification/NotificactionProvider"; import { useCart } from "./CartContext";
 
-
-
-
     const handleOnAdd = (quantity) => {
         const productToAdd = {
             id, name, price, quantity
         }
-        console.log(`se agregaron ${quantity} ${name}`)/
         addItem(productToAdd) 
         setNotification('success',`Se agrego correctamente ${quantity} ${name}`)
-
     }
 
 

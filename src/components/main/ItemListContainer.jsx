@@ -21,7 +21,6 @@ const { categoryId } = useParams()
 
         getDocs(productsRef)
             .then(snapshot =>{
-                console.log(snapshot)
                 const productsAdapted = snapshot.docs.map( doc => {
                     const data = doc.data()
                     return { id: doc.id, ...data}

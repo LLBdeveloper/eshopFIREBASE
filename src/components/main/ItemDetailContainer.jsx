@@ -17,7 +17,6 @@ function ItemDetailContainer() {
         const productRef = doc(db, 'products', productId)
         getDoc(productRef)
             .then(snapshot => {
-                console.log(snapshot)
                 const data = snapshot.data()
                 const productAdapted = {id: snapshot.id, ...data}
                 setProduct(productAdapted)

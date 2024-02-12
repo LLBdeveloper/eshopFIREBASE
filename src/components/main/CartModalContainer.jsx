@@ -2,24 +2,19 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import CartWidget from './CartWidget';
-
 import { useCart } from './CartContext'
+import { Link } from 'react-router-dom';
 
 
 function CartModal() {
-    const [show, setShow] = useState(false);
 
+    const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const {cart, removeItem} = useCart()
 
-
-
-
-    console.log(cart)
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
 
     return (
         <>
@@ -40,7 +35,6 @@ function CartModal() {
                 </Modal.Header>
                 <Modal.Body className='bg-dark text-secondary'>
                     <h2>INFORMATION OF YOUR CART WITH DETAILS</h2>
-                    {/* <p>CANT    DETAIL        PRICE</p> */}
                     {cart.map(item => (
                             <div key={item.id} className="border border-success mb-2 p-2">
                                 {item.name} - x{item.quantity} - ${item.price * item.quantity}
@@ -54,9 +48,9 @@ function CartModal() {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button to='/checkout' variant="success">
+                    <Link to='/checkout' className="btn btn-success ms-2" onClick={handleClose}>
                         Buy Now
-                    </Button>
+                    </Link>
                 </Modal.Footer>
             </Modal>
         </>

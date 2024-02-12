@@ -1,6 +1,5 @@
 import { useState, createContext, useContext } from 'react'
 
-
 const Notification = ({type, message}) =>{
     const notificationStyle = {
       // position: 'absolute',
@@ -12,7 +11,7 @@ const Notification = ({type, message}) =>{
     borderRadius: 10,
     marginTop: '10px'
     }
-
+    
     if(!message) return
 
     return (
@@ -24,7 +23,6 @@ const Notification = ({type, message}) =>{
 
 const NotificationContext = createContext()
 
-
 export const NotificactionProvider = ({children}) => {
     
     const [notificationData, setNotificationData] = useState({
@@ -32,15 +30,12 @@ export const NotificactionProvider = ({children}) => {
         text: ''
     })
     
-    
     const setNotification = (type, text) => {
         setNotificationData({type, text})
         setTimeout(()=> {
             setNotification({type, text: ''})
-        }, 3000)
+        }, 4000)
     }
-    
-
 
     return (
         <NotificationContext.Provider value={{setNotification}} >
