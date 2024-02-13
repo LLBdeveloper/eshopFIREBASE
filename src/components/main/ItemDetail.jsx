@@ -23,7 +23,7 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
 
 
     return (
-        <Card key={id} style={{ width: '18rem', margin: '3rem' }}>
+        <Card key={id} style={{ width: '18rem', margin: '3rem', textAlign: 'center' }} >
                 <Card.Body>
                     <Card.Title>{name.toUpperCase()}</Card.Title>
                     <CardText>Categoria: {category}</CardText>

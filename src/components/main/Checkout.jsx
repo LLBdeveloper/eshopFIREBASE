@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
+import { ClipLoader } from "react-spinners";
 import { Link } from 'react-router-dom';
 import { useCart } from './CartContext';
 import { useNotificacion } from "../../notification/NotificactionProvider";
 import { collection, addDoc, getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore';
-
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-
 
 function Checkout() {
     const { cart, removeItem, clearCart } = useCart();
     const [total, setTotal] = useState(0);
     const { setNotification } = useNotificacion(); 
-
+    const [loading, setLoading] = useState(false)
     const [buyerName, setBuyerName] = useState('');
     const [buyerPhone, setBuyerPhone] = useState('');
     const [buyerEmail, setBuyerEmail] = useState('');
@@ -34,6 +33,7 @@ function Checkout() {
         const productRef = doc(db, 'products', productId);
 
         try {
+            setLoading(true)
             const productSnapshot = await getDoc(productRef);
             if (productSnapshot.exists()) {
                 const currentStock = productSnapshot.data().stock;
@@ -53,9 +53,10 @@ function Checkout() {
             const db = getFirestore();
             const ordersCollection = collection(db, 'orders');
             await addDoc(ordersCollection, order);
-            console.log('Orden creada exitosamente');
+            setNotification('success', '¡Orden creada exitosamente!');
+
         } catch (error) {
-            console.error('Error al crear la orden:', error);
+            setNotification('error', '¡Error al crear la orden!');
         }
     };
 
@@ -75,16 +76,26 @@ function Checkout() {
                         return;
                     }
                 } else {
-                    console.log('El producto no existe');
+                    setNotification('error', '¡El producto no existe!');
+
                 }
             } catch (error) {
-                console.error('Error al verificar el stock:', error);
+                setNotification('error', '¡Error al verificar el stock!');
                 return;
+            }finally {
+                setLoading(false)
             }
         }
 
+    if(loading) {
+        return(
+            <div className="loading-spinner m-5" >
+                <ClipLoader size={300} color={"#ffff00"} loading={loading} />
+                <h2 className=" m-2"> L o a d i n g  .   .   . </h2>                
+            </div>
+        )
+    }
 
-        // Mostrar un mensaje de compra exitosa u otra acción
         setNotification('success', '¡Gracias por tu compra!');
         // Crear la orden en Firebase
         const order = {
@@ -102,7 +113,7 @@ function Checkout() {
     };
 
     return (
-        <div className="container bg-white p-3">
+        <div className="container bg-white p-3 m-5">
             <h1 className='border border-warning border-5 rounded m-5 p-2'>Finalizar compra</h1>
             <h3 className='m-3'>Ingrese sus datos</h3>
             <FloatingLabel controlId="floatingInput1" label="Nombre completo" className="m-3">
@@ -126,7 +137,9 @@ function Checkout() {
                 <h3>Total: $ {total}</h3>
             </div>
             <Link to="/">Volver al inicio</Link>
-            <button id='buy' className="btn btn-success ms-2" onClick={handleBuy}>Comprar</button>
+            <button id='buy' className="btn btn-success ms-2" onClick={handleBuy}>
+                Comprar
+            </button>
         </div>
     );
 }

@@ -1,22 +1,27 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { getCategories } from '../../mocks/asyncMock';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CartModalContainer from '../main/CartModalContainer';
-// import CartWidget from '../main/CartWidget';
+import {collection, getDocs, query, orderBy} from 'firebase/firestore'
+import {db} from '../../services/firebase/firebaseConfig'
+
 
 function NavBar() {
 
     const [categories, setCategories] = useState([])
 
     useEffect(()=>{
-        getCategories()
-            .then(response => {
-                setCategories(response)
-                
-        })
+        const categoriesRef = query(collection(db, 'categories'), orderBy('order'))
+        getDocs(categoriesRef)
+            .then(snapshot =>{
+                const categoriesAdapted = snapshot.docs.map(doc =>{
+                    const data = doc.data()
+                    return {id: doc.id, ...data}
+                })
+                setCategories(categoriesAdapted)
+            })
     },[])
 
     return (
@@ -27,7 +32,7 @@ function NavBar() {
                     <Nav className="me-auto p-2">
                         {categories.map(cat =>{
                             return (
-                                <Link className="btn btn-warning m-1 " key={cat.id} to={`/category/${cat.slug}`}>{cat.description}</Link>
+                                <Link className="btn btn-warning m-2 d-flex justify-content-center align-items-center" key={cat.id} to={`/category/${cat.slug}`}>{cat.label}</Link>
                             )
                         })}
                         <CartModalContainer  />

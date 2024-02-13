@@ -16,6 +16,7 @@ const categories = [
     {id: '1', description: 'Boards', slug: 'tabla'},
     {id: '2', description: 'Armchairs', slug: 'sillon'},
     {id: '3', description: 'Refrigerators', slug: 'heladera'},
+
 ]
 
 export const getCategories = () => {

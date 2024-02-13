@@ -6,7 +6,7 @@ const Item = ({ id, name, img, price}) => {
 
 
     return (
-        <Card style={{ width: '18rem', margin: '1rem' }} bg="dark" data-bs-theme="dark" border="warning" >
+        <Card style={{ width: '18rem', margin: '1rem', textAlign: 'center'}} bg="dark" data-bs-theme="dark" border="warning" >
             <Card.Body>
                 <Card.Img variant="top" src={img} />
                 <Card.Title>{name.toUpperCase()}</Card.Title>
@@ -21,7 +21,7 @@ const Item = ({ id, name, img, price}) => {
 
 
 
-
+// className='d-flex justify-content-center align-items-center'
 export default Item
 
 

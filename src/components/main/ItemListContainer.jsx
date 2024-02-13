@@ -37,14 +37,14 @@ const { categoryId } = useParams()
 
     if(loading) {
         return (
-            <div className="loading-spinner m-5" >
+            <div className="loading-spinner m-5 d-flex justify-content-center align-items-center" >
                 <ClipLoader size={300} color={"#ffff00"} loading={loading} />
                 <h2 className=" m-2"> L o a d i n g  .   .   . </h2>                
             </div>
     )}   
     
     return (
-        <div >
+        <div className="loading-spinner m-5 d-flex justify-content-center align-items-center">
             <ItemList products={products}/>
         </div>
     )
