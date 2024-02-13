@@ -49,11 +49,15 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
                     <ListGroup.Item>Precio $ {price}</ListGroup.Item>
                 </ListGroup>
                 <Card.Body>
-                {
-                    isInCart(id) ?  ( <Link to='/checkout' className="btn btn-warning">FINALIZAR COMPRA </Link>
-                    ):( <ItemCount stock={stock} initial={1} onAdd={handleOnAdd}/>
-                    )
-                }
+                    {stock <= 0 ? (
+                        <p>SIN STOCK</p>
+                    ) : (
+                        isInCart(id) ? (
+                            <Link to='/checkout' className="btn btn-warning">FINALIZAR COMPRA</Link>
+                        ) : (
+                            <ItemCount stock={stock} initial={1} onAdd={handleOnAdd}/>
+                        )
+                    )}
                 </Card.Body>
             </Card>
     )
@@ -61,6 +65,11 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
 
 export default ItemDetail
 
+// {
+//     isInCart(id) ?  ( <Link to='/checkout' className="btn btn-warning">FINALIZAR COMPRA </Link>
+//     ):( <ItemCount stock={stock} initial={1} onAdd={handleOnAdd}/>
+//     )
+// }
 
 
 

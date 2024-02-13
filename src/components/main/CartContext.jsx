@@ -18,7 +18,6 @@ export const CartProvider = ({children}) => {
         return cart.some(prod => prod.id === id)
     }
     
-
     const removeItem = (id) => {
         const updateCart = cart.filter(prod=> prod.id !== id)
         setCart(updateCart)
@@ -46,8 +45,6 @@ export const CartProvider = ({children}) => {
 
     )
 }
-
-
 
 export const useCart = () => {
     return useContext(CartContext)
