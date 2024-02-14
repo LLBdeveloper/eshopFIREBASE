@@ -5,7 +5,6 @@ import CartWidget from './CartWidget';
 import { useCart } from './CartContext'
 import { Link } from 'react-router-dom';
 
-
 function CartModal() {
 
     const [show, setShow] = useState(false);
@@ -38,7 +37,7 @@ function CartModal() {
                     {cart.map(item => (
                             <div key={item.id} className="border border-success mb-2 p-2">
                                 {item.name} - x{item.quantity} - ${item.price * item.quantity}
-                                <Button variant="danger" className="ms-2" onClick={() => removeItem(item.id)}>-</Button>
+                                <Button variant="danger" className="ms-2" onClick={() => removeItem(item.id)}>Delete</Button>
                             </div>
                     ))}
                     <hr />

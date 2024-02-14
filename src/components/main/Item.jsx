@@ -12,7 +12,7 @@ const Item = ({ id, name, img, price}) => {
                 <Card.Title>{name.toUpperCase()}</Card.Title>
                 <Card.Text>$ {price}</Card.Text>
 
-                <Link className="btn btn-warning" to={`/item/${id}`} >Buy</Link>
+                <Link className="btn btn-warning" to={`/item/${id}`} >Detail</Link>
 
             </Card.Body>
         </Card>

@@ -28,7 +28,7 @@ function NavBar() {
         <>
             <Navbar bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Link to="/" className='text-warning' >FREE MARKET</Link>
+                    <Link to="/" className='text-warning text-center' > GAMMER GEAR  </Link>
                     <Nav className="me-auto p-2">
                         {categories.map(cat =>{
                             return (

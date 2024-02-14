@@ -31,9 +31,9 @@ function ItemDetailContainer() {
     },[productId])
     if(loading) {
         return (
-            <div className="loading-spinner m-5 d-flex justify-content-center align-items-center" >
+            <div className="loading-spinner m-5 d-flex justify-content-center align-items-center flex-column" >
                 <ClipLoader size={300} color={"#ffff00"} loading={loading} />
-                <h2 className=" m-2"> L o a d i n g  .   .   . </h2>                
+                <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
             </div>
     )}
 
