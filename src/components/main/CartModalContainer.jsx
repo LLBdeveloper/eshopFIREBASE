@@ -5,6 +5,7 @@ import CartWidget from './CartWidget';
 import { useCart } from './CartContext'
 import { Link } from 'react-router-dom';
 
+
 function CartModal() {
 
     const [show, setShow] = useState(false);

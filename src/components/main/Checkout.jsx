@@ -17,12 +17,22 @@ function Checkout() {
     const [buyerEmail, setBuyerEmail] = useState('');
 
     useEffect(() => {
+
+        setLoading(true)
+
         const calculateTotal = () => {
             const totalAmount = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
             setTotal(totalAmount);
         };
         calculateTotal();
     }, [cart]);
+
+
+    useEffect(() =>{
+        setTimeout(() => {
+            setLoading(false)
+        }, 800);
+    },[])
 
     const handleRemoveItem = (id) => {
         removeItem(id);
@@ -33,7 +43,6 @@ function Checkout() {
         const productRef = doc(db, 'products', productId);
 
         try {
-            setLoading(true)
             const productSnapshot = await getDoc(productRef);
             if (productSnapshot.exists()) {
                 const currentStock = productSnapshot.data().stock;
@@ -82,19 +91,8 @@ function Checkout() {
             } catch (error) {
                 setNotification('error', '¡Error al verificar el stock!');
                 return;
-            }finally {
-                setLoading(false)
             }
         }
-
-    if(loading) {
-        return(
-            <div className="loading-spinner m-5" >
-                <ClipLoader size={300} color={"#ffff00"} loading={loading} />
-                <h2 className=" m-2"> L o a d i n g  .   .   . </h2>                
-            </div>
-        )
-    }
 
         setNotification('success', '¡Gracias por tu compra!');
         // Crear la orden en Firebase
@@ -113,34 +111,49 @@ function Checkout() {
     };
 
     return (
-        <div className="container bg-white p-3 m-5">
-            <h1 className='border border-warning border-5 rounded m-5 p-2'>Finalizar compra</h1>
-            <h3 className='m-3'>Ingrese sus datos</h3>
-            <FloatingLabel controlId="floatingInput1" label="Nombre completo" className="m-3">
-                <Form.Control type="text" placeholder="Example name"  value={buyerName} onChange={(e) => setBuyerName(e.target.value)} />
-            </FloatingLabel>
-            <FloatingLabel controlId="floatingInput2" label="Email address" className="m-3" >
-                <Form.Control type="email" placeholder="name@example.com" value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)}/>
-            </FloatingLabel>
-            <FloatingLabel controlId="floatingInput3" label="Phone number" className="m-3" >
-                <Form.Control type="text" placeholder="1140202040" value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)}/>
-            </FloatingLabel>
-
-            <div>
-                {cart.map(item => (
-                    <div key={item.id} className="border border-success mb-2 p-2">
-                        {item.name} - x{item.quantity} - ${item.price * item.quantity}
-                        <button className="btn btn-danger ms-2" onClick={() => handleRemoveItem(item.id)}>Eliminar</button>
+        <>
+            {
+                loading ? (
+                    <div className="loading-spinner m-5 d-flex justify-content-center align-items-center flex-column" >
+                        <ClipLoader size={300} color={"#ffff00"} loading={loading} />
+                        <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
                     </div>
-                ))}
-                <hr />
-                <h3>Total: $ {total}</h3>
-            </div>
-            <Link to="/">Volver al inicio</Link>
-            <button id='buy' className="btn btn-success ms-2" onClick={handleBuy}>
-                Comprar
-            </button>
-        </div>
+                    ) : (
+                    <div className="container bg-white p-3 m-5">
+                        <h1 className='border border-warning border-5 rounded m-5 p-2'>Finalizar compra</h1>
+                        <h3 className='m-3'>Ingrese sus datos</h3>
+                        <FloatingLabel controlId="floatingInput1" label="Nombre completo" className="m-3">
+                            <Form.Control type="text" placeholder="Example name"  value={buyerName} onChange={(e) => setBuyerName(e.target.value)} />
+                        </FloatingLabel>
+                        <FloatingLabel controlId="floatingInput2" label="Email address" className="m-3" >
+                            <Form.Control type="email" placeholder="name@example.com" value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)}/>
+                        </FloatingLabel>
+                        <FloatingLabel controlId="floatingInput3" label="Phone number" className="m-3" >
+                            <Form.Control type="text" placeholder="1140202040" value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)}/>
+                        </FloatingLabel>
+
+                        <div>
+                            {cart.map(item => (
+                                <div key={item.id} className="border border-success mb-2 p-2">
+                                    {item.name} - x{item.quantity} - ${item.price * item.quantity}
+                                    <button className="btn btn-danger ms-2" onClick={() => handleRemoveItem(item.id)}>Eliminar</button>
+                                </div>
+                            ))}
+                            <hr />
+                            <h3>Total: $ {total}</h3>
+                        </div>
+                        <Link to="/">Volver al inicio</Link>
+                        <button id='buy' className="btn btn-success ms-2" onClick={handleBuy}>
+                            Comprar
+                        </button>
+                    </div>
+                )
+            }
+        </>
+        
+
+
+        
     );
 }
 
