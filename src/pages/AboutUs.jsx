@@ -38,7 +38,7 @@ function AboutUs() {
                         <Container className="m-5">
                         <h1 className="display-2 text-center m-5 text-dark fw-bold">About Us</h1>
                         <div className="text-center">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/eshopreactcoder2.appspot.com/o/envioHombre.jpg?alt=media&token=9ef977e2-51d9-4c1b-be40-a42656cb2c3c" alt="repartidor" style={{ maxHeight: '30rem' }} className='m-5'/>
+                            <img src="https://firebasestorage.googleapis.com/v0/b/eshopreactcoder2.appspot.com/o/envioHombre.jpg?alt=media&token=9ef977e2-51d9-4c1b-be40-a42656cb2c3c" alt="repartidor" style={{ maxWidth: '50vw' }} className='m-5 rounded ' />
                             <p>
                                 Welcome to our store! We are a passionate team of technology enthusiasts who have been selling computer products in Buenos Aires for over a decade.
                             </p>

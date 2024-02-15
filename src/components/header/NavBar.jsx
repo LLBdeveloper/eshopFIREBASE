@@ -28,8 +28,8 @@ function NavBar() {
 
     return (
         <>
-            <Navbar bg="dark" data-bs-theme="dark">
-                <Container >
+            <Navbar bg="dark" data-bs-theme="dark" >
+                <Container  >
                     <Navbar.Brand >
                                 
                             <Link  to="/" className='text-warning text-center text-5 marginRight3' > 
@@ -38,7 +38,7 @@ function NavBar() {
                             </Link>
                     </Navbar.Brand>
 
-                    <Nav className="me-auto p-2 ">
+                    <Nav className="me-auto p-2 " >
                         {categories.map(cat =>{
                             return (
                                 <Link className="btn btn-warning m-2 d-flex justify-content-center align-items-center" key={cat.id} to={`/category/${cat.slug}`}>{cat.label}</Link>
