@@ -32,7 +32,7 @@ function Checkout() {
         setTimeout(() => {
             setLoading(false)
         }, 800);
-    },[])
+    },)
 
     const handleRemoveItem = (id) => {
         removeItem(id);
@@ -79,6 +79,7 @@ function Checkout() {
                 const productSnapshot = await getDoc(productRef);
                 if (productSnapshot.exists()) {
                     const currentStock = productSnapshot.data().stock;
+                    alert('Tu compra fue confirmada, te contactaremos para coordiar todo en tan solo minutos')
                     if (currentStock < item.quantity) {
                         // Si el stock es insuficiente para algún producto, mostrar un mensaje de error y no permitir la compra
                         alert(`El producto "${item.name}" tiene stock insuficiente`);
@@ -119,33 +120,34 @@ function Checkout() {
                         <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
                     </div>
                     ) : (
-                    <div className="container bg-white p-3 m-5">
-                        <h1 className='border border-warning border-5 rounded m-5 p-2'>Finalizar compra</h1>
-                        <h3 className='m-3'>Ingrese sus datos</h3>
-                        <FloatingLabel controlId="floatingInput1" label="Nombre completo" className="m-3">
-                            <Form.Control type="text" placeholder="Example name"  value={buyerName} onChange={(e) => setBuyerName(e.target.value)} />
-                        </FloatingLabel>
-                        <FloatingLabel controlId="floatingInput2" label="Email address" className="m-3" >
-                            <Form.Control type="email" placeholder="name@example.com" value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)}/>
-                        </FloatingLabel>
-                        <FloatingLabel controlId="floatingInput3" label="Phone number" className="m-3" >
-                            <Form.Control type="text" placeholder="1140202040" value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)}/>
-                        </FloatingLabel>
+                    <div className="container bg-white p-3 m-5 border border-dark border-5 rounded-5 text-center">
+                        <h1 className='text-center border border-warning border-5 rounded m-5 p-3'>CHECKOUT</h1>
+                        <div className='m-5'>
+                            <h3 className='m-3'>Complete the Fields</h3>
+                            <FloatingLabel controlId="floatingInput1" label="Nombre completo" className="m-3">
+                                <Form.Control type="text" placeholder="Example name"  value={buyerName} onChange={(e) => setBuyerName(e.target.value)} />
+                            </FloatingLabel>
+                            <FloatingLabel controlId="floatingInput2" label="Email address" className="m-3" >
+                                <Form.Control type="email" placeholder="name@example.com" value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)}/>
+                            </FloatingLabel>
+                            <FloatingLabel controlId="floatingInput3" label="Phone number" className="m-3" >
+                                <Form.Control type="text" placeholder="1140202040" value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)}/>
+                            </FloatingLabel>
+                        </div>
 
                         <div>
+                            <h3 className='mt-5 mb-3'>Products Details</h3>
                             {cart.map(item => (
                                 <div key={item.id} className="border border-success mb-2 p-2">
                                     {item.name} - x{item.quantity} - ${item.price * item.quantity}
                                     <button className="btn btn-danger ms-2" onClick={() => handleRemoveItem(item.id)}>Eliminar</button>
                                 </div>
                             ))}
-                            <hr />
-                            <h3>Total: $ {total}</h3>
+
+                            <h2 className='m-5 fw-bold'>Total: $ {total}</h2>
                         </div>
-                        <Link to="/">Volver al inicio</Link>
-                        <button id='buy' className="btn btn-success ms-2" onClick={handleBuy}>
-                            Comprar
-                        </button>
+                        <Link to="/" className="btn btn-primary ms-2">See more</Link>
+                        <button id='buy' className="btn btn-success ms-2" onClick={handleBuy}>Buy</button>
                     </div>
                 )
             }

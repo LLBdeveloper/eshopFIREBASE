@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import CartModalContainer from '../main/CartModalContainer';
 import {collection, getDocs, query, orderBy} from 'firebase/firestore'
 import {db} from '../../services/firebase/firebaseConfig'
+import Image from 'react-bootstrap/Image';
+import './NavBar.css'
 
 
 function NavBar() {
@@ -27,16 +29,23 @@ function NavBar() {
     return (
         <>
             <Navbar bg="dark" data-bs-theme="dark">
-                <Container>
-                    <Link to="/" className='text-warning text-center' > GAMMER GEAR  </Link>
-                    <Nav className="me-auto p-2">
+                <Container >
+                    <Navbar.Brand >
+                                
+                            <Link  to="/" className='text-warning text-center text-5 marginRight3' > 
+                                <Image className='marginRight2' src="../../../public/icons/cifrado.png" alt="logo" fluid/>
+                                GAMMER GEAR 
+                            </Link>
+                    </Navbar.Brand>
+
+                    <Nav className="me-auto p-2 ">
                         {categories.map(cat =>{
                             return (
                                 <Link className="btn btn-warning m-2 d-flex justify-content-center align-items-center" key={cat.id} to={`/category/${cat.slug}`}>{cat.label}</Link>
                             )
                         })}
-                        <CartModalContainer  />
                     </Nav>
+                        <CartModalContainer className="justify-content-end" />
                 </Container>
             </Navbar>
         </>

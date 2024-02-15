@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useNotificacion } from "../../notification/NotificactionProvider";
 import CardText from "react-bootstrap/esm/CardText";
 
-const ItemDetail = ({id, name, img, category, description, price, stock}) => {
+const ItemDetail = ({id, name, img, img2, img3,category, description, price, stock}) => {
 
     const {addItem, isInCart} = useCart()
     const {setNotification} = useNotificacion()//se puede exportar el context pero esta hecho con customHooks// asi es del modo tradicional: useContext(NotificationContext) y eso arriba: import { NotificationContext } from "../../notification/NotificactionProvider"; import { useCart } from "./CartContext";
@@ -23,37 +23,40 @@ const ItemDetail = ({id, name, img, category, description, price, stock}) => {
 
 
     return (
-        <Card key={id} style={{ width: '18rem', margin: '3rem', textAlign: 'center' }} >
+        <Card key={id} style={{ width: '40vw', margin: '3rem', textAlign: 'center' }} >
                 <Card.Body>
-                    <Card.Title>{name.toUpperCase()}</Card.Title>
+                    <Card.Title className="fs-3 mb-3">{name.toUpperCase()}</Card.Title>
                     <CardText>Categoria: {category}</CardText>
-                        <Carousel>
-                            <Carousel.Item>
-                                <Card.Img src={img} alt="" />
+                        <Carousel >
+                            <Carousel.Item >
+                                <Card.Img src={img} alt="foto del producto 1" />
                             </Carousel.Item>
                             <Carousel.Item>
-                                <Card.Img src="https://picsum.photos/200/301" alt="" />
+                                <Card.Img src={img2} alt="foto del producto 2" />
 
                             </Carousel.Item>
                             <Carousel.Item>
-                                <Card.Img src="https://picsum.photos/200/302" alt="" />
+                                <Card.Img src={img3} alt="foto del producto 3" />
                                 
                             </Carousel.Item>
                         </Carousel>
-                    <Card.Text>
+                    <Card.Text className='mt-3'>
                         {description}
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroup.Item>Envio: Free Shipping</ListGroup.Item>
-                    <ListGroup.Item>Precio $ {price}</ListGroup.Item>
+                    <ListGroup.Item className='mt-3 fs-5'>Free Shipping </ListGroup.Item>
+                    <ListGroup.Item className='mb-3 mt-3 fs-3 fw-bold'>Price $ {price}</ListGroup.Item>
                 </ListGroup>
                 <Card.Body>
                     {stock <= 0 ? (
                         <p>SIN STOCK</p>
                     ) : (
                         isInCart(id) ? (
-                            <Link to='/checkout' className="btn btn-warning">FINALIZAR COMPRA</Link>
+                            <div className=' '>
+                                <Link to='/checkout' className="btn btn-success m-2 p-3">FINISH PURCHASE</Link>
+                                <Link to='/' className="btn btn-warning m-2 p-3">SEE MORE PRODUCTS</Link>
+                            </div>
                         ) : (
                             <ItemCount stock={stock} initial={1} onAdd={handleOnAdd}/>
                         )

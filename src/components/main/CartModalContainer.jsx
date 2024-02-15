@@ -30,15 +30,17 @@ function CartModal() {
             >
                 <Modal.Header closeButton>
                     <Modal.Title>
-                        <h1>SHOPPING CART</h1>
+                        <h1 className='h1'>SHOPPING CART</h1>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='bg-dark text-secondary'>
-                    <h2>INFORMATION OF YOUR CART WITH DETAILS</h2>
+                    <h2 className='fs-5'>INFORMATION OF YOUR CART WITH DETAILS</h2>
                     {cart.map(item => (
-                            <div key={item.id} className="border border-success mb-2 p-2">
+                            <div key={item.id} className="border border-success m-4 p-5 text-center d-flex">
                                 {item.name} - x{item.quantity} - ${item.price * item.quantity}
-                                <Button variant="danger" className="ms-2" onClick={() => removeItem(item.id)}>Delete</Button>
+                                <div>
+                                    <Button  variant="danger" className="m-3" onClick={() => removeItem(item.id)}>Delete</Button>
+                                </div>
                             </div>
                     ))}
                     <hr />
