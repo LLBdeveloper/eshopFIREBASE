@@ -17,15 +17,15 @@ function App() {
       <BrowserRouter>
           <CartProvider>
             <NavBar/>
-        <NotificactionProvider>
-            <Routes>
-              <Route path='/' element={<ItemListContainer/>} />          
-              <Route path='/category/:categoryId' element={<ItemListContainer/>} />
-              <Route path='/item/:productId' element={<ItemDetailContainer/>} />
-              <Route path='/cart' element={<CartModalContainer/>} />
-              <Route path='/checkout' element={<Checkout/>} />
-            </Routes>
-        </NotificactionProvider>
+              <NotificactionProvider>
+                  <Routes>
+                    <Route path='/' element={<ItemListContainer/>} />          
+                    <Route path='/category/:categoryId' element={<ItemListContainer/>} />
+                    <Route path='/item/:productId' element={<ItemDetailContainer/>} />
+                    <Route path='/cart' element={<CartModalContainer/>} />
+                    <Route path='/checkout' element={<Checkout/>} />
+                  </Routes>
+              </NotificactionProvider>
             <Footer/>
           </CartProvider>
       </BrowserRouter>
