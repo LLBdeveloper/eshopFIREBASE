@@ -33,7 +33,7 @@ function NavBar() {
                     <Navbar.Brand >
                                 
                             <Link  to="/" className='text-warning text-center text-5 marginRight3' > 
-                                <Image className='marginRight2' src="../../../public/icons/cifrado.png" alt="logo" fluid/>
+                                <Image className='marginRight2' src="https://firebasestorage.googleapis.com/v0/b/eshopreactcoder2.appspot.com/o/cifrado.png?alt=media&token=d067a5e5-357e-4fca-86ab-ab4d71683a92" alt="logo" fluid/>
                                 GAMMER GEAR 
                             </Link>
                     </Navbar.Brand>
