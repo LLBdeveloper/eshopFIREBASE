@@ -1,9 +1,11 @@
-import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import { ClipLoader } from "react-spinners";
+import { useEffect, useState } from 'react';
 
 function ContactForm() {
+    const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
         fullName: '',
         tel: '',
@@ -32,8 +34,34 @@ function ContactForm() {
         });
     };
 
+
+        
+    useEffect(() => {
+
+        setLoading(true)
+        console.log('spinner prendido')
+        
+    },[] );
+
+
+    useEffect(() =>{
+        setTimeout(() => {
+            setLoading(false)
+            console.log('spinner apagado')
+        }, 800);
+    },)
+
+
     return (
-        <Container className='m-5 '>
+        <div className='d-flex justify-content-center align-items-center flex-column' >
+            {
+                loading ? (
+                    <div className="loading-spinner m-5 d-flex justify-content-center align-items-center flex-column" >
+                        <ClipLoader size={300} color={"#ffff00"} loading={loading} />
+                        <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
+                    </div>
+                    ) : (
+                        <Container className='m-5 '>
             <h1 className="text-center m-5 fw-bold ">CONTACT US</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="fullName">
@@ -90,7 +118,13 @@ function ContactForm() {
                 </Button>
             </Form>
         </Container>
+                )
+            }
+        </div>
     );
 }
 
 export default ContactForm;
+
+
+
