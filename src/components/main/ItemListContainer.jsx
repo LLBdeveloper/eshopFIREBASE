@@ -44,7 +44,7 @@ const { categoryId } = useParams()
     )}   
     
     return (
-        <div className="loading-spinner m-5 d-flex justify-content-center align-items-center">
+        <div className=" m-5 d-flex justify-content-center align-items-center ">
             <ItemList products={products}/>
         </div>
     )

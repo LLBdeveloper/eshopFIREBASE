@@ -112,7 +112,7 @@ function Checkout() {
     };
 
     return (
-        <>
+        <div className='d-flex justify-content-center align-items-center flex-column' >
             {
                 loading ? (
                     <div className="loading-spinner m-5 d-flex justify-content-center align-items-center flex-column" >
@@ -120,11 +120,11 @@ function Checkout() {
                         <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
                     </div>
                     ) : (
-                    <div className="container bg-white p-3 m-5 border border-dark border-5 rounded-5 text-center">
+                    <div className="container bg-white p-3 m-5 border border-dark border-5 rounded-5 text-center " style={{ maxWidth: '60vw' }}>
                         <h1 className='text-center border border-warning border-5 rounded m-5 p-3'>CHECKOUT</h1>
-                        <div className='m-5'>
+                        <div className='m-5 '>
                             <h3 className='m-3'>Complete the Fields</h3>
-                            <FloatingLabel controlId="floatingInput1" label="Nombre completo" className="m-3">
+                            <FloatingLabel controlId="floatingInput1" label="Full name" className="m-3">
                                 <Form.Control type="text" placeholder="Example name"  value={buyerName} onChange={(e) => setBuyerName(e.target.value)} />
                             </FloatingLabel>
                             <FloatingLabel controlId="floatingInput2" label="Email address" className="m-3" >
@@ -151,7 +151,7 @@ function Checkout() {
                     </div>
                 )
             }
-        </>
+        </div>
         
 
 

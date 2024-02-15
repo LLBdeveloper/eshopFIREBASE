@@ -8,7 +8,9 @@ import { CartProvider } from './components/main/CartContext'
 import CartModalContainer from './components/main/CartModalContainer'
 import Checkout from './components/main/Checkout'
 import Footer from './components/main/Footer'
-
+import Contact from './././pages/Contact'
+import Location from './././pages/Location'
+import AboutUs from './././pages/AboutUs'
 
 function App() {
 
@@ -24,6 +26,9 @@ function App() {
                     <Route path='/item/:productId' element={<ItemDetailContainer/>} />
                     <Route path='/cart' element={<CartModalContainer/>} />
                     <Route path='/checkout' element={<Checkout/>} />
+                    <Route path='/contact' element={<Contact/>} />
+                    <Route path='/location' element={<Location/>} />
+                    <Route path='/aboutus' element={<AboutUs/>} />
                   </Routes>
               </NotificactionProvider>
             <Footer/>
