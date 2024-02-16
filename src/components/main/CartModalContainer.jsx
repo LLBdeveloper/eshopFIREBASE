@@ -12,7 +12,7 @@ function CartModal() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const {cart, removeItem, decrementQuantity, incrementQuantity} = useCart()
+    const {cart, removeItem, decrementQuantity, incrementQuantity, clearCart} = useCart()
 
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -36,19 +36,23 @@ function CartModal() {
                 <Modal.Body className='bg-dark text-secondary'>
                     <h2 className='fs-5'>INFORMATION OF YOUR CART WITH DETAILS</h2>
                     {cart.map(item => (
-                            <div key={item.id} className="border border-success m-4 p-5 text-center d-flex">
+                            <div key={item.id} className="border border-success m-4 p-5 text-center ">
+                                <Button  variant="danger" className="m-1" onClick={() => removeItem(item.id)}>x</Button>
                                 {item.name} - x{item.quantity} - ${item.price * item.quantity}
                                 <div>
-                                    <Button  variant="danger" className="m-3" onClick={() => removeItem(item.id)}>Delete</Button>
-                                    <Button className='m-3' onClick={()=> decrementQuantity(item.id)}>
+                                    <Button className='m-1' onClick={()=> decrementQuantity(item.id)}>
                                         -
                                     </Button>
-                                    <Button className='m-3' onClick={()=> incrementQuantity(item.id, item.stock)}>
+                                    <Button className='m-1' onClick={()=> incrementQuantity(item.id, item.stock)}>
                                         +
                                     </Button>
                                 </div>
                             </div>
                     ))}
+                    {cart.length > 0 && ( // Condición para mostrar el botón solo si hay elementos en el carrito
+                        <Button variant="danger" onClick={() => clearCart()}>Clear cart</Button>
+                    )}
+                    
                     <hr />
                     <h3>TOTAL $ {total}</h3>
                 </Modal.Body>
