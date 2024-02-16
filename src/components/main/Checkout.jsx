@@ -140,7 +140,14 @@ function Checkout() {
                             {cart.map(item => (
                                 <div key={item.id} className="border border-success mb-2 p-2">
                                     {item.name} - x{item.quantity} - ${item.price * item.quantity}
-                                    <button className="btn btn-danger ms-2" onClick={() => handleRemoveItem(item.id)}>Eliminar</button>
+                                    <button className="btn btn-danger ms-2" onClick={() => handleRemoveItem(item.id)}>Delete</button>
+                                    <button>
+                                        -
+                                    </button>
+                                    
+                                    <button>
+                                        +
+                                    </button>
                                 </div>
                             ))}
 
