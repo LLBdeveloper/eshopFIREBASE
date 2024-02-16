@@ -57,9 +57,41 @@ export const CartProvider = ({children}) => {
     }
 
 
+    const incrementQuantity = (id) => {
+            const cartUpdated = cart.map(prod => {
+                if(prod.id === id) {
+                    const productUpdated = {
+                        ...prod,
+                        quantity: prod.quantity + 1
+                    }
+                return productUpdated
+                } else {
+                    return prod
+                }
+            })
+            setCart(cartUpdated)
+    }
+
+    const decrementQuantity = (id) => {
+        const cartUpdated = cart.map(prod => {
+            if(prod.id === id) {
+                const productUpdated = {
+                    ...prod,
+                    quantity: prod.quantity > 1 ? prod.quantity - 1 : prod.quantity
+                }
+            return productUpdated
+            } else {
+                return prod
+            }
+        })
+        setCart(cartUpdated)
+}
+
+
+
 
     return (
-        <CartContext.Provider value={{cart, getProductQuantity, addItem, totalQuantity, removeItem, isInCart, clearCart}}>
+        <CartContext.Provider value={{cart, getProductQuantity, addItem, totalQuantity, removeItem, isInCart, clearCart, incrementQuantity, decrementQuantity}}>
             {children}
         </CartContext.Provider>
 

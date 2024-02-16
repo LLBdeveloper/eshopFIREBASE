@@ -12,7 +12,7 @@ function CartModal() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const {cart, removeItem} = useCart()
+    const {cart, removeItem, decrementQuantity, incrementQuantity} = useCart()
 
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -40,6 +40,12 @@ function CartModal() {
                                 {item.name} - x{item.quantity} - ${item.price * item.quantity}
                                 <div>
                                     <Button  variant="danger" className="m-3" onClick={() => removeItem(item.id)}>Delete</Button>
+                                    <Button className='m-3' onClick={()=> decrementQuantity(item.id)}>
+                                        -
+                                    </Button>
+                                    <Button className='m-3' onClick={()=> incrementQuantity(item.id)}>
+                                        +
+                                    </Button>
                                 </div>
                             </div>
                     ))}
