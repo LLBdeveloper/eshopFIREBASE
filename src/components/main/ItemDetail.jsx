@@ -15,7 +15,7 @@ const ItemDetail = ({id, name, img, img2, img3,category, description, price, sto
 
     const handleOnAdd = (quantity) => {
         const productToAdd = {
-            id, name, price, quantity
+            id, name, price, quantity, stock
         }
         addItem(productToAdd) 
         setNotification('success',`Se agrego correctamente ${quantity} ${name}`)

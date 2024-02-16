@@ -43,7 +43,7 @@ function CartModal() {
                                     <Button className='m-3' onClick={()=> decrementQuantity(item.id)}>
                                         -
                                     </Button>
-                                    <Button className='m-3' onClick={()=> incrementQuantity(item.id)}>
+                                    <Button className='m-3' onClick={()=> incrementQuantity(item.id, item.stock)}>
                                         +
                                     </Button>
                                 </div>

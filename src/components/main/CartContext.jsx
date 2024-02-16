@@ -57,12 +57,12 @@ export const CartProvider = ({children}) => {
     }
 
 
-    const incrementQuantity = (id) => {
+    const incrementQuantity = (id, stock) => {
             const cartUpdated = cart.map(prod => {
                 if(prod.id === id) {
                     const productUpdated = {
                         ...prod,
-                        quantity: prod.quantity + 1
+                        quantity: prod.quantity < stock ? prod.quantity + 1 : prod.quantity
                     }
                 return productUpdated
                 } else {
