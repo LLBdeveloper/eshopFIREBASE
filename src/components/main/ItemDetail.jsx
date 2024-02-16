@@ -10,7 +10,7 @@ import CardText from "react-bootstrap/esm/CardText";
 
 const ItemDetail = ({id, name, img, img2, img3,category, description, price, stock}) => {
 
-    const {addItem, isInCart} = useCart()
+    const {addItem, isInCart, getProductQuantity} = useCart()
     const {setNotification} = useNotificacion()//se puede exportar el context pero esta hecho con customHooks// asi es del modo tradicional: useContext(NotificationContext) y eso arriba: import { NotificationContext } from "../../notification/NotificactionProvider"; import { useCart } from "./CartContext";
 
     const handleOnAdd = (quantity) => {
@@ -22,8 +22,8 @@ const ItemDetail = ({id, name, img, img2, img3,category, description, price, sto
     }
 
 
+    const productQuantity = getProductQuantity(id)
 
-    
 console.log(isInCart)// BORRARRRRRRRRRRR es SOLO PARA Q NO DE ERORR DE Q NO USO ISINCART
 
 
@@ -65,7 +65,7 @@ console.log(isInCart)// BORRARRRRRRRRRRR es SOLO PARA Q NO DE ERORR DE Q NO USO 
                         //         <Link to='/' className="btn btn-warning m-2 p-3">SEE MORE PRODUCTS</Link>
                         //     </div>
                         // ) : (
-                            <ItemCount stock={stock} initial={1} onAdd={handleOnAdd}/>
+                            <ItemCount stock={stock} initial={productQuantity || 1} onAdd={handleOnAdd}/>
                         // )
                     )}
                 </Card.Body>

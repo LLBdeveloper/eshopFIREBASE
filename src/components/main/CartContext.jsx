@@ -49,8 +49,17 @@ export const CartProvider = ({children}) => {
 
     const totalQuantity = getTotalQuantity()
 
+    const getProductQuantity = (id) => {
+        const productAdded = cart.find(prod => prod.id === id)
+        const quantity = productAdded?.quantity || 0
+        
+        return quantity
+    }
+
+
+
     return (
-        <CartContext.Provider value={{cart, addItem, totalQuantity, removeItem, isInCart, clearCart}}>
+        <CartContext.Provider value={{cart, getProductQuantity, addItem, totalQuantity, removeItem, isInCart, clearCart}}>
             {children}
         </CartContext.Provider>
 
