@@ -4,7 +4,7 @@ import ItemCount from "./ItemCount"
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useCart } from "./CartContext";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useNotificacion } from "../../notification/NotificactionProvider";
 import CardText from "react-bootstrap/esm/CardText";
 
@@ -20,6 +20,13 @@ const ItemDetail = ({id, name, img, img2, img3,category, description, price, sto
         addItem(productToAdd) 
         setNotification('success',`Se agrego correctamente ${quantity} ${name}`)
     }
+
+
+
+    
+console.log(isInCart)// BORRARRRRRRRRRRR es SOLO PARA Q NO DE ERORR DE Q NO USO ISINCART
+
+
 
 
     return (
@@ -52,14 +59,14 @@ const ItemDetail = ({id, name, img, img2, img3,category, description, price, sto
                     {stock <= 0 ? (
                         <p>SIN STOCK</p>
                     ) : (
-                        isInCart(id) ? (
-                            <div className=' '>
-                                <Link to='/checkout' className="btn btn-success m-2 p-3">FINISH PURCHASE</Link>
-                                <Link to='/' className="btn btn-warning m-2 p-3">SEE MORE PRODUCTS</Link>
-                            </div>
-                        ) : (
+                        // isInCart(id) ? (
+                        //     <div className=' '>
+                        //         <Link to='/checkout' className="btn btn-success m-2 p-3">FINISH PURCHASE</Link>
+                        //         <Link to='/' className="btn btn-warning m-2 p-3">SEE MORE PRODUCTS</Link>
+                        //     </div>
+                        // ) : (
                             <ItemCount stock={stock} initial={1} onAdd={handleOnAdd}/>
-                        )
+                        // )
                     )}
                 </Card.Body>
             </Card>
