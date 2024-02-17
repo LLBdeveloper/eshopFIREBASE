@@ -33,7 +33,7 @@ const ItemDetail = ({ id, name, img, img2, img3, category, description, price, s
                 <CardText>Categoria: {category}</CardText>
                 <CardText>Stock: {stock}</CardText>
 
-                <Carousel>
+                <Carousel style={{ maxWidth: '50%', margin:'auto' }}>
                     <Carousel.Item onClick={() => handleShowModal(img)}>
                         <Card.Img src={img} alt="foto del producto 1" />
                     </Carousel.Item>

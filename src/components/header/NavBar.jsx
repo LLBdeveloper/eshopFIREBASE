@@ -27,7 +27,7 @@ function NavBar() {
 
     return (
         <>
-            <Navbar bg="dark" data-bs-theme="dark" >
+            <Navbar bg="dark" data-bs-theme="dark"  >
                 <Container  >
                     <Navbar.Brand className='me-5' >
                             <Link  to="/" className='text-warning text-center text-5' > 
