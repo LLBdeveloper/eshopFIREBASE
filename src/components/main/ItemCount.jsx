@@ -25,17 +25,3 @@ function ItemCount({stock, initial, onAdd}) {
 }
 
 export default ItemCount
-///////////////////////////////////////////////////////////////////
-// CONTADOR CON INPUT :
-//
-// const Input = ({onAdd, stock, initial=1}) => {
-//     const [count, setCount] = useState(initial)
-//
-//     const handleChange = (e) => {
-//         if(e.target.value <= stock) {
-//             setCount(e.target.value)
-//         }
-//     }
-//
-// }
-////////////////////////////////////////////////////////////////////

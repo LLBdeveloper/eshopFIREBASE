@@ -45,8 +45,4 @@ function ItemDetailContainer() {
         </div>
     );
 }
-// className='d-flex justify-content-center align-items-center'
 export default ItemDetailContainer;
-
-
-

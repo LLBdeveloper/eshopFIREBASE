@@ -51,4 +51,3 @@ const { categoryId } = useParams()
 }
 
 export default ItemListContainer
-
