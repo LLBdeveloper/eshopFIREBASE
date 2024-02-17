@@ -7,6 +7,7 @@ import CartModalContainer from '../main/CartModalContainer';
 import {collection, getDocs, query, orderBy} from 'firebase/firestore'
 import {db} from '../../services/firebase/firebaseConfig'
 import Image from 'react-bootstrap/Image';
+import './NavBar.css'
 
 
 function NavBar() {
@@ -36,7 +37,7 @@ function NavBar() {
                             </Link>
                     </Navbar.Brand>
 
-                    <Nav className="me-auto p-2 " >
+                    <Nav  id='category' className="me-auto p-2 " >
                         {categories.map(cat =>{
                             return (
                                 <Link className="btn btn-warning m-2 d-flex justify-content-center align-items-center" key={cat.id} to={`/category/${cat.slug}`}>{cat.label}</Link>
