@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import CartWidget from './CartWidget';
 import { useCart } from './CartContext'
 import { Link } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
 
 function CartModal() {
@@ -27,49 +28,64 @@ function CartModal() {
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
+                size="xl"
             >
                 <Modal.Header closeButton>
                     <Modal.Title>
                         <h1 className='h1'>SHOPPING CART</h1>
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body className='bg-dark text-secondary'>
+                <Modal.Body className='bg-dark text-secondary text-center p-5'>
 
-                    <h2 className='fs-5'>INFORMATION OF YOUR CART WITH DETAILS</h2>
+                    <h2 className='h2 mb-5'>INFORMATION OF YOUR CART WITH DETAILS</h2>
                 
                     {cart.length === 0 && (<div className='text-center m-5'><h2 className='fs-1 fw-bold text-danger shadow'>YOUR CART IS EMPTY</h2></div>)}
 
                     {cart.map(item => (
-                            <div key={item.id} className="border border-success m-4 p-5 text-center ">
-                                <img src={item.img} alt="img producto" className='rounded-circle m-1' style={{ maxWidth: '50px'}} />
-                                
-                                {item.name} - x{item.quantity} - ${item.price * item.quantity}
-                                <div>
-                                    <Button  variant="secondary" className="m-5 " onClick={() => removeItem(item.id)}>x</Button>
+                            <Container key={item.id} className="border border-success rounded m-4 p-5 text-center d-flex justify-content-center align-items-center  ">
+                                <div className='me-5'>
+                                    <Button  variant="danger" className="ms-5 rounded-circle " onClick={() => removeItem(item.id)}>
+                                            X
+                                    </Button>
+                                </div>
+                                <div className='ms-5 '>
+                                    <img src={item.img} alt="img producto" className='img-fluid rounded-circle me-1' style={{ maxWidth: '4rem'}} />
                                     
-                                    <Button variant="danger" className='m-1' onClick={()=> decrementQuantity(item.id)}>
+                                    <span className='fs-4 fw-bold m-2 '>
+                                        {item.name} - x{item.quantity} - ${item.price * item.quantity}
+                                    </span>
+
+                                    
+                                </div>
+
+                                <div>
+                                    
+                                    <Button variant="danger" className='m-1 ' onClick={()=> decrementQuantity(item.id)}>
                                         -
                                     </Button>
-                                    <Button variant="success" className='m-1' onClick={()=> incrementQuantity(item.id, item.stock)}>
+                                    <Button variant="success" className='m-1 ' onClick={()=> incrementQuantity(item.id, item.stock)}>
                                         +
                                     </Button>
                                 </div>
-                            </div>
+                            </Container>
                     ))}
-                    {cart.length > 0 && ( 
-                        <Button variant="danger" onClick={() => clearCart()}>Clear cart</Button>
-                    )}
+                    
+                    <div className='text-start'>
+                        {cart.length > 0 && ( 
+                            <Button variant="danger" onClick={() => clearCart()} className='m-3'>Clear cart</Button>
+                        )}
+                    </div>
                     
                     <hr />
-                    <h3>TOTAL $ {total}</h3>
+                    <h3 className='fs-2 fw-bold m-4'>TOTAL $ {total}</h3>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" className='p-3' onClick={handleClose}>
                         Close
                     </Button>
                     {cart.length > 0 && ( 
-                        <Link to='/checkout' className="btn btn-success ms-2" onClick={handleClose}>
-                        Buy Now
+                        <Link to='/checkout' className="btn btn-success ms-3 p-3" onClick={handleClose}>
+                        BUY NOW
                         </Link>
                     )}
                     
