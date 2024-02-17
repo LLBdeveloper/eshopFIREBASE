@@ -59,10 +59,10 @@ const ItemDetail = ({ id, name, img, img2, img3, category, description, price, s
                 )}
             </Card.Body>
 
-            <Modal show={showModal} onHide={handleCloseModal} centered>
+            <Modal show={showModal} onHide={handleCloseModal} centered size="xl">
                 <Modal.Header closeButton></Modal.Header>
                 <Modal.Body>
-                    <img src={modalImg} className="d-block w-100" alt="foto del producto" />
+                    <img src={modalImg} className="d-block  mx-auto" alt="foto del producto" style={{ maxWidth: '100%' }} />
                 </Modal.Body>
             </Modal>
         </Card>
