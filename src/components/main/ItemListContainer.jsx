@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
 import { ClipLoader } from "react-spinners";
 import { useParams } from "react-router-dom";
+import { Container } from 'react-bootstrap';
 import { getDocs, collection, query, where } from 'firebase/firestore'
 import { db } from '../../services/firebase/firebaseConfig' 
 
@@ -44,9 +45,9 @@ const { categoryId } = useParams()
     )}   
     
     return (
-        <div className=" m-5 d-flex justify-content-center align-items-center ">
+        <Container className=" m-5 d-flex justify-content-center align-items-center ">
             <ItemList products={products}/>
-        </div>
+        </Container>
     )
 }
 

@@ -3,11 +3,19 @@ import Item from './Item';
 
 
 
+
 function ItemList({products}) {
     return (
-        <div className="d-flex flex-wrap justify-content-center">
+
+<div className="container">
+    <div className="container">
+        <div className="d-flex flex-wrap justify-content-center row">
             {products.map(product => <Item key={product.id} {...product} />)}
         </div>
+    </div>
+</div>
+
+        
     )
 }
 ItemList.propTypes = {
