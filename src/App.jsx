@@ -7,7 +7,7 @@ import NotificactionProvider from './notification/NotificactionProvider'
 import { CartProvider } from './components/main/CartContext'
 import CartModalContainer from './components/main/CartModalContainer'
 import Checkout from './components/main/Checkout'
-// import Footer from './components/footer/Footer'
+import Footer from './components/footer/Footer'
 import Contact from './././pages/Contact'
 import Location from './././pages/Location'
 import AboutUs from './././pages/AboutUs'
@@ -31,7 +31,7 @@ function App() {
                     <Route path='/aboutus' element={<AboutUs/>} />
                   </Routes>
               </NotificactionProvider>
-            {/* <Footer/> */}
+            <Footer/>
           </CartProvider>
       </BrowserRouter>
     </>
