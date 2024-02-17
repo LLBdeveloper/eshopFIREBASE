@@ -127,8 +127,8 @@ function Checkout() {
                         <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
                     </div>
                     ) : (
-                    <Container className="container bg-white p-5 m-5 border border-dark border-5 rounded-5 text-center " style={{ maxWidth: '60vw' }}>
-                        <h1 className='text-center border border-warning border-5 rounded m-5 p-3 display-3 fw-bold'>CHECKOUT</h1>
+                    <Container className="container bg-white p-5 m-5 border border-dark border-5 rounded-5 text-center " >
+                        <h1 className='text-center border border-warning border-5 rounded m-5 p-3 display-3 fw-bold '>CHECKOUT</h1>
                         <div className='m-5 p-5'>
                             <h3 className='h3'>Complete the Fields</h3>
                             <Form onSubmit={handleBuy}>
