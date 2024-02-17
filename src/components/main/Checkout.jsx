@@ -7,6 +7,8 @@ import { collection, addDoc, getFirestore, doc, getDoc, updateDoc } from 'fireba
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/esm/Button';
+import { Container } from 'react-bootstrap';
+
 
 function Checkout() {
     const { cart, removeItem, clearCart, decrementQuantity, incrementQuantity } = useCart();
@@ -71,6 +73,7 @@ function Checkout() {
     };
 
     const handleBuy = async () => {
+        event.preventDefault()
         // Verificar si hay suficiente stock para cada producto en el carrito
         for (const item of cart) {
             const db = getFirestore();
@@ -121,19 +124,32 @@ function Checkout() {
                         <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
                     </div>
                     ) : (
-                    <div className="container bg-white p-3 m-5 border border-dark border-5 rounded-5 text-center " style={{ maxWidth: '60vw' }}>
-                        <h1 className='text-center border border-warning border-5 rounded m-5 p-3'>CHECKOUT</h1>
+                    <Container className="container bg-white p-3 m-5 border border-dark border-5 rounded-5 text-center " style={{ maxWidth: '60vw' }}>
+                        <h1 className='text-center border border-warning border-5 rounded m-5 p-3 display-3 fw-bold'>CHECKOUT</h1>
                         <div className='m-5 '>
                             <h3 className='m-3'>Complete the Fields</h3>
-                            <FloatingLabel controlId="floatingInput1" label="Full name" className="m-3">
-                                <Form.Control type="text" placeholder="Example name"  value={buyerName} onChange={(e) => setBuyerName(e.target.value)} />
-                            </FloatingLabel>
-                            <FloatingLabel controlId="floatingInput2" label="Email address" className="m-3" >
-                                <Form.Control type="email" placeholder="name@example.com" value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)}/>
-                            </FloatingLabel>
-                            <FloatingLabel controlId="floatingInput3" label="Phone number" className="m-3" >
-                                <Form.Control type="text" placeholder="1140202040" value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)}/>
-                            </FloatingLabel>
+                            <Form onSubmit={handleBuy}>
+                                <Form.Group className="mb-3" controlId="name">
+                                    <FloatingLabel  label="Full name" className="m-3">
+                                        <Form.Control type="text" placeholder="Example name"  value={buyerName} onChange={(e) => setBuyerName(e.target.value)} required/>
+                                    </FloatingLabel>
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="email">
+                                    <FloatingLabel  label="Email address" className="m-3" >
+                                        <Form.Control type="email" placeholder="name@example.com" required value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)}/>
+                                    </FloatingLabel>
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="phone">
+                                    <FloatingLabel  label="Phone number" className="m-3" >
+                                        <Form.Control type="text" placeholder="1140202040" value={buyerPhone} required onChange={(e) => setBuyerPhone(e.target.value)}/>
+                                    </FloatingLabel>
+                                </Form.Group>
+                                <div>
+                            <Link to="/" className="btn btn-warning ms-2">See more</Link>
+
+                            <Button className="btn btn-success ms-2" type="submit" >Buy</Button>
+                            </div>
+                            </Form>
                         </div>
                         
                         <div>
@@ -155,9 +171,9 @@ function Checkout() {
 
                             <h2 className='m-5 fw-bold'>Total: $ {total}</h2>
                         </div>
-                        <Link to="/" className="btn btn-primary ms-2">See more</Link>
-                        <button id='buy' className="btn btn-success ms-2" onClick={handleBuy}>Buy</button>
-                    </div>
+                        
+
+                    </Container>
                 )
             }
         </div>
