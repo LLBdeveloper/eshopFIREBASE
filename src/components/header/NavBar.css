@@ -1,5 +1,5 @@
-@media screen and (max-width: 600px) {
-    #category {
+@media screen and (max-width: 790px) {
+    #categoryHide {
         display: none;
         }
     }
