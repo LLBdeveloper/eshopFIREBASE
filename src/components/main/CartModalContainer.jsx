@@ -37,13 +37,16 @@ function CartModal() {
                     <h2 className='fs-5'>INFORMATION OF YOUR CART WITH DETAILS</h2>
                     {cart.map(item => (
                             <div key={item.id} className="border border-success m-4 p-5 text-center ">
-                                <Button  variant="danger" className="m-1" onClick={() => removeItem(item.id)}>x</Button>
+                                <img src={item.img} alt="img producto" className='rounded-circle m-1' style={{ maxWidth: '50px'}} />
+                                
                                 {item.name} - x{item.quantity} - ${item.price * item.quantity}
                                 <div>
-                                    <Button className='m-1' onClick={()=> decrementQuantity(item.id)}>
+                                    <Button  variant="secondary" className="m-5 " onClick={() => removeItem(item.id)}>x</Button>
+                                    
+                                    <Button variant="danger" className='m-1' onClick={()=> decrementQuantity(item.id)}>
                                         -
                                     </Button>
-                                    <Button className='m-1' onClick={()=> incrementQuantity(item.id, item.stock)}>
+                                    <Button variant="success" className='m-1' onClick={()=> incrementQuantity(item.id, item.stock)}>
                                         +
                                     </Button>
                                 </div>
