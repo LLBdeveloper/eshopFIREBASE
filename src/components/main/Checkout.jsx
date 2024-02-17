@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState  } from 'react';
 import { ClipLoader } from "react-spinners";
 import { Link } from 'react-router-dom';
 import { useCart } from './CartContext';
@@ -12,17 +12,14 @@ import { Container } from 'react-bootstrap';
 
 function Checkout() {
     const { cart, removeItem, clearCart, decrementQuantity, incrementQuantity } = useCart();
-    const [total, setTotal] = useState(0);
     const { setNotification } = useNotificacion(); 
+    const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(false)
     const [buyerName, setBuyerName] = useState('');
     const [buyerPhone, setBuyerPhone] = useState('');
-    const [buyerEmail, setBuyerEmail] = useState('');
-
+    const [buyerEmail, setBuyerEmail] = useState('');    
+    
     useEffect(() => {
-
-        setLoading(true)
-
         const calculateTotal = () => {
             const totalAmount = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
             setTotal(totalAmount);
@@ -30,6 +27,11 @@ function Checkout() {
         calculateTotal();
     }, [cart]);
 
+    
+    useEffect(() => {
+        setLoading(true)    
+    }, [])
+    
 
     useEffect(() =>{
         setTimeout(() => {
@@ -73,7 +75,8 @@ function Checkout() {
     };
 
     const handleBuy = async () => {
-        event.preventDefault()
+        event.preventDefault();
+
         // Verificar si hay suficiente stock para cada producto en el carrito
         for (const item of cart) {
             const db = getFirestore();
@@ -111,7 +114,8 @@ function Checkout() {
         cart.forEach(item => {
             decrementStock(item.id, item.quantity);
         });
-                clearCart();
+        
+        clearCart();
     };
 
     return (
@@ -123,10 +127,10 @@ function Checkout() {
                         <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
                     </div>
                     ) : (
-                    <Container className="container bg-white p-3 m-5 border border-dark border-5 rounded-5 text-center " style={{ maxWidth: '60vw' }}>
+                    <Container className="container bg-white p-5 m-5 border border-dark border-5 rounded-5 text-center " style={{ maxWidth: '60vw' }}>
                         <h1 className='text-center border border-warning border-5 rounded m-5 p-3 display-3 fw-bold'>CHECKOUT</h1>
-                        <div className='m-5 '>
-                            <h3 className='m-3'>Complete the Fields</h3>
+                        <div className='m-5 p-5'>
+                            <h3 className='h3'>Complete the Fields</h3>
                             <Form onSubmit={handleBuy}>
                                 <Form.Group className="mb-3" controlId="name">
                                     <FloatingLabel  label="Full name" className="m-3 shadow">
@@ -143,16 +147,21 @@ function Checkout() {
                                         <Form.Control type="text" placeholder="1140202040" value={buyerPhone} required onChange={(e) => setBuyerPhone(e.target.value)}/>
                                     </FloatingLabel>
                                 </Form.Group>
-                                <div className='m-5'>
-                                    <Link to="/" className="btn btn-warning ms-2 p-3 text-white">See more</Link>
-                                    <Button className="btn btn-success ms-2 p-3" type="submit" >Buy</Button>
+                                <div className='mt-5'>
+                                    <Link to="/" className="btn btn-warning m-1 p-4 text-white">See more</Link>
+
+                                    {cart.length === 0 ? (
+                                        <Button className="btn btn-secondary m-1 p-4 ps-5 pe-5" type="button" onClick={() => alert('No tienes productos en el carrito')}>Buy</Button>
+                                    ) : (
+                                        <Button className="btn btn-success m-1 p-4 ps-5 pe-5" type="submit">Buy</Button>
+                                    )}
                                 </div>
                             </Form>
                         </div>
                         <div>
-                            <h3 className='mt-5 mb-3'>Products Details</h3>
+                            <h3 className='m-5 h3'>Products Details</h3>
                             {cart.map(item => (
-                                <div key={item.id} className="border border-success mb-2 p-2">
+                                <div key={item.id} className="border border-success m-5 p-2">
                                     <img src={item.img} alt="img producto" className='rounded-circle m-1' style={{ maxWidth: '50px'}} />
                                     {item.name} - x{item.quantity} - ${item.price * item.quantity}
                                     <Button className="btn btn-secondary m-5" onClick={() => handleRemoveItem(item.id)}>X</Button>
@@ -164,7 +173,7 @@ function Checkout() {
                                     </Button>
                                 </div>
                             ))}
-                            <h2 className='m-5 fw-bold'>Total: $ {total}</h2>
+                            <h2 className='m-5 fw-bold fs-1'>Total: $ {total}</h2>
                         </div>
                     </Container>
                 )
