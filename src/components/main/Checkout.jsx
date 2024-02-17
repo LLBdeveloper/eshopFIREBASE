@@ -6,9 +6,10 @@ import { useNotificacion } from "../../notification/NotificactionProvider";
 import { collection, addDoc, getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/esm/Button';
 
 function Checkout() {
-    const { cart, removeItem, clearCart } = useCart();
+    const { cart, removeItem, clearCart, decrementQuantity, incrementQuantity } = useCart();
     const [total, setTotal] = useState(0);
     const { setNotification } = useNotificacion(); 
     const [loading, setLoading] = useState(false)
@@ -134,13 +135,21 @@ function Checkout() {
                                 <Form.Control type="text" placeholder="1140202040" value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)}/>
                             </FloatingLabel>
                         </div>
-
+                        
                         <div>
                             <h3 className='mt-5 mb-3'>Products Details</h3>
                             {cart.map(item => (
-                                <div key={item.id} className="border border-success mb-2 p-2">
+                            
+                            <div key={item.id} className="border border-success mb-2 p-2">
+                                    <img src={item.img} alt="img producto" className='rounded-circle m-1' style={{ maxWidth: '50px'}} />
                                     {item.name} - x{item.quantity} - ${item.price * item.quantity}
-                                    <button className="btn btn-danger ms-2" onClick={() => handleRemoveItem(item.id)}>Delete</button>
+                                    <Button className="btn btn-secondary m-5" onClick={() => handleRemoveItem(item.id)}>X</Button>
+                                    <Button variant="danger" className='m-1' onClick={()=> decrementQuantity(item.id)}>
+                                        -
+                                    </Button>
+                                    <Button variant="success" className='m-1' onClick={()=> incrementQuantity(item.id, item.stock)}>
+                                        +
+                                    </Button>
                                 </div>
                             ))}
 
