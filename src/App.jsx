@@ -10,6 +10,7 @@ import Checkout from './components/main/Checkout'
 import Contact from './././pages/Contact'
 import Location from './././pages/Location'
 import AboutUs from './././pages/AboutUs'
+import FooterComponent from './components/footerComponent/FooterComponent'
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
       <BrowserRouter>
           <CartProvider>
             <NavBar/>
-              <NotificactionProvider>
+                <NotificactionProvider>
                   <Routes>
                     <Route path='/' element={<ItemListContainer/>} />          
                     <Route path='/category/:categoryId' element={<ItemListContainer/>} />
@@ -29,7 +30,8 @@ function App() {
                     <Route path='/location' element={<Location/>} />
                     <Route path='/aboutus' element={<AboutUs/>} />
                   </Routes>
-              </NotificactionProvider>
+                </NotificactionProvider>
+            <FooterComponent/>
           </CartProvider>
       </BrowserRouter>
     </>
