@@ -14,11 +14,11 @@ function ItemCount({stock, initial, onAdd}) {
 
     return (
         <div >
-            <button className="btn  m-2 bg-danger text-light" onClick={decrement}>-</button>
+            <button className="btn  m-2 bg-secondary text-light" onClick={decrement}>-</button>
             <span className="fs-4">{count}</span>
-            <button className="btn m-2 bg-success text-light"  onClick={increment}>+</button>
+            <button className="btn m-2 bg-secondary text-light"  onClick={increment}>+</button>
             <div>
-                <button className="btn btn-secondary m-2 " onClick={()=> onAdd(count)} >Add to cart</button>
+                <button className="btn btn-success m-2 " onClick={()=> onAdd(count)} >Add to cart</button>
             </div>
         </div>
     )

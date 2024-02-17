@@ -34,7 +34,11 @@ function CartModal() {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='bg-dark text-secondary'>
+
                     <h2 className='fs-5'>INFORMATION OF YOUR CART WITH DETAILS</h2>
+                
+                    {cart.length === 0 && (<div className='text-center m-5'><h2 className='fs-1 fw-bold text-danger shadow'>YOUR CART IS EMPTY</h2></div>)}
+
                     {cart.map(item => (
                             <div key={item.id} className="border border-success m-4 p-5 text-center ">
                                 <img src={item.img} alt="img producto" className='rounded-circle m-1' style={{ maxWidth: '50px'}} />
@@ -52,7 +56,7 @@ function CartModal() {
                                 </div>
                             </div>
                     ))}
-                    {cart.length > 0 && ( // Condición para mostrar el botón solo si hay elementos en el carrito
+                    {cart.length > 0 && ( 
                         <Button variant="danger" onClick={() => clearCart()}>Clear cart</Button>
                     )}
                     
@@ -63,9 +67,12 @@ function CartModal() {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Link to='/checkout' className="btn btn-success ms-2" onClick={handleClose}>
+                    {cart.length > 0 && ( 
+                        <Link to='/checkout' className="btn btn-success ms-2" onClick={handleClose}>
                         Buy Now
-                    </Link>
+                        </Link>
+                    )}
+                    
                 </Modal.Footer>
             </Modal>
         </>

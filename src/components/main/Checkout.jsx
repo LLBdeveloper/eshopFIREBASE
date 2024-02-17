@@ -130,25 +130,25 @@ function Checkout() {
                             <h3 className='m-3'>Complete the Fields</h3>
                             <Form onSubmit={handleBuy}>
                                 <Form.Group className="mb-3" controlId="name">
-                                    <FloatingLabel  label="Full name" className="m-3">
+                                    <FloatingLabel  label="Full name" className="m-3 shadow">
                                         <Form.Control type="text" placeholder="Example name"  value={buyerName} onChange={(e) => setBuyerName(e.target.value)} required/>
                                     </FloatingLabel>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="email">
-                                    <FloatingLabel  label="Email address" className="m-3" >
+                                    <FloatingLabel  label="Email address" className="m-3 shadow" >
                                         <Form.Control type="email" placeholder="name@example.com" required value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)}/>
                                     </FloatingLabel>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="phone">
-                                    <FloatingLabel  label="Phone number" className="m-3" >
+                                    <FloatingLabel  label="Phone number" className="m-3 shadow" >
                                         <Form.Control type="text" placeholder="1140202040" value={buyerPhone} required onChange={(e) => setBuyerPhone(e.target.value)}/>
                                     </FloatingLabel>
                                 </Form.Group>
-                                <div>
-                            <Link to="/" className="btn btn-warning ms-2">See more</Link>
+                                <div className='m-5'>
+                                    <Link to="/" className="btn btn-warning ms-2 p-3 text-white">See more</Link>
 
-                            <Button className="btn btn-success ms-2" type="submit" >Buy</Button>
-                            </div>
+                                    <Button className="btn btn-success ms-2 p-3" type="submit" >Buy</Button>
+                                </div>
                             </Form>
                         </div>
                         
