@@ -128,7 +128,7 @@ function Checkout() {
                         <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
                     </div>
                     ) : (
-                    <Container  className="container bg-warning p-3 m-2 border border-dark border-5 rounded-5 text-center" style={{width:'90%'}} >
+                    <Container  className="container bg-warning p-3 m-4 border border-dark border-5 rounded text-center" style={{width:'100%'}} >
                         <h1 className='text-center border border-dark shadow border-5 rounded m-2 p-2  fw-bold '>CHECKOUT</h1>
                         <div className='m-5 p-5'>
                             <h3 className='h3 '>Complete the Fields</h3>
