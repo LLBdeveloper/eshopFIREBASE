@@ -5,7 +5,7 @@ import CartWidget from './CartWidget';
 import { useCart } from './CartContext'
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-
+import './CartModal.css'
 
 function CartModal() {
 
@@ -43,23 +43,20 @@ function CartModal() {
 
                     {cart.map(item => (
                             <Container key={item.id} className="border border-success rounded m-4 p-5 text-center d-flex justify-content-center align-items-center  ">
-                                <div className='me-5'>
-                                    <Button  variant="danger" className="ms-5 rounded-circle " onClick={() => removeItem(item.id)}>
+                                <div className='me-auto' >
+                                    <Button  variant="danger" className="rounded-circle me-1" onClick={() => removeItem(item.id)}>
                                             X
                                     </Button>
                                 </div>
-                                <div className='ms-5 '>
-                                    <img src={item.img} alt="img producto" className='img-fluid rounded-circle me-1' style={{ maxWidth: '4rem'}} />
-                                    
-                                    <span className='fs-4 fw-bold m-2 '>
+                                <div className='me-auto'>
+                                    <img id='imgModalHide' src={item.img} alt="img producto" className='img-fluid rounded-circle me-1' style={{ maxWidth: '4rem'}} />
+                                </div>
+                                <div className='me-auto'>                                    
+                                    <span className='fs-4 fw-bold me-2 '>
                                         {item.name} - x{item.quantity} - ${item.price * item.quantity}
                                     </span>
-
-                                    
                                 </div>
-
-                                <div>
-                                    
+                                <div className='ms-auto' id='buttonModalHide'>
                                     <Button variant="danger" className='m-1 ' onClick={()=> decrementQuantity(item.id)}>
                                         -
                                     </Button>
@@ -70,7 +67,7 @@ function CartModal() {
                             </Container>
                     ))}
                     
-                    <div className='text-start'>
+                    <div id='clearCart'  className='text-start'>
                         {cart.length > 0 && ( 
                             <Button variant="danger" onClick={() => clearCart()} className='m-3'>Clear cart</Button>
                         )}

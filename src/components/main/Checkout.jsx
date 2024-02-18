@@ -8,6 +8,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/esm/Button';
 import { Container } from 'react-bootstrap';
+import './Checkout.css'
 
 
 function Checkout() {
@@ -127,8 +128,8 @@ function Checkout() {
                         <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
                     </div>
                     ) : (
-                    <Container className="container bg-white p-5 m-5 border border-dark border-5 rounded-5 text-center " >
-                        <h1 className='text-center border border-warning border-5 rounded m-5 p-3 display-3 fw-bold '>CHECKOUT</h1>
+                    <Container  className="container bg-white p-5 m-5 border border-dark border-5 rounded-5 text-center " >
+                        <h1 className='text-center border border-warning border-5 rounded m-5 p-3  fw-bold '>CHECKOUT</h1>
                         <div className='m-5 p-5'>
                             <h3 className='h3'>Complete the Fields</h3>
                             <Form onSubmit={handleBuy}>
@@ -161,16 +162,20 @@ function Checkout() {
                         <div>
                             <h3 className='m-5 h3'>Products Details</h3>
                             {cart.map(item => (
-                                <div key={item.id} className="border border-success m-5 p-2">
-                                    <img src={item.img} alt="img producto" className='rounded-circle m-1' style={{ maxWidth: '50px'}} />
+                                <div key={item.id} className="border border-success  p-2">
+                                    <img id='imgCheckoutHide' src={item.img} alt="img producto" className='rounded-circle m-1' style={{ maxWidth: '50px'}} />
                                     {item.name} - x{item.quantity} - ${item.price * item.quantity}
-                                    <Button className="btn btn-secondary m-5" onClick={() => handleRemoveItem(item.id)}>X</Button>
-                                    <Button variant="danger" className='m-1' onClick={()=> decrementQuantity(item.id)}>
-                                        -
-                                    </Button>
-                                    <Button variant="success" className='m-1' onClick={()=> incrementQuantity(item.id, item.stock)}>
-                                        +
-                                    </Button>
+                                    
+                                    <div id='buttonCheckoutBlock' className='ms-1' style={{display:'inline'}}>
+                                        <Button className="btn btn-secondary " onClick={() => handleRemoveItem(item.id)}>X</Button>
+                                        <Button variant="danger" className='m-1' onClick={()=> decrementQuantity(item.id)}>
+                                            -
+                                        </Button>
+                                        <Button variant="success" className='m-1' onClick={()=> incrementQuantity(item.id, item.stock)}>
+                                            +
+                                        </Button>
+                                    </div>
+                                    
                                 </div>
                             ))}
                             <h2 className='m-5 fw-bold fs-1'>Total: $ {total}</h2>

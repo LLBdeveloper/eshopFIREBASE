@@ -45,7 +45,7 @@ const { categoryId } = useParams()
     )}   
     
     return (
-        <Container className=" m-5 d-flex justify-content-center align-items-center ">
+        <Container className=" d-flex justify-content-center align-items-center ">
             <ItemList products={products}/>
         </Container>
     )

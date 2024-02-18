@@ -1,0 +1,13 @@
+@media screen and (max-width: 1000px) {
+    #imgCheckoutHide {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    #buttonCheckoutBlock {
+        display: block !important;
+
+    }
+}

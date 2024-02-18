@@ -1,0 +1,19 @@
+@media screen and (max-width: 1000px) {
+    #imgModalHide {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #buttonModalHide {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #clearCart {
+        text-align: center !important;
+    }
+}
+
+

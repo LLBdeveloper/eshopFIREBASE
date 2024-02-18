@@ -40,7 +40,7 @@ function ItemDetailContainer() {
 
 
     return (
-        <div className="loading-spinner m-5 d-flex justify-content-center align-items-center">
+        <div className=" d-flex justify-content-center align-items-center">
             <ItemDetail  {...product}/>
         </div>
     );

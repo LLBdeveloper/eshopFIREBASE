@@ -5,6 +5,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import CardText from "react-bootstrap/esm/CardText";
 import { useCart } from "./CartContext";
 import { useNotificacion } from "../../notification/NotificactionProvider";
+import './ItemDetail.css'
 
 const ItemDetail = ({ id, name, img, img2, img3, category, description, price, stock }) => {
     const [showModal, setShowModal] = useState(false);
@@ -27,7 +28,7 @@ const ItemDetail = ({ id, name, img, img2, img3, category, description, price, s
     const productQuantity = getProductQuantity(id);
 
     return (
-        <Card key={id} style={{ maxWidth: '45rem', margin: '3rem', textAlign: 'center' }}>
+        <Card id='cardXs' key={id} style={{ maxWidth: '45rem', margin: '3rem', textAlign: 'center' }}>
             <Card.Body>
                 <Card.Title className="fs-3 mb-3">{name.toUpperCase()}</Card.Title>
                 <CardText>Categoria: {category}</CardText>
