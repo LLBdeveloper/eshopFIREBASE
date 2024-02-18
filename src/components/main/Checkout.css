@@ -2,12 +2,13 @@
     #imgCheckoutHide {
         display: none;
     }
-}
-
-
-@media screen and (max-width: 1000px) {
     #buttonCheckoutBlock {
         display: block !important;
+    }
+}
 
+@media screen and (max-width: 500px) {
+    #buttonCheckoutBlock {
+        display: none !important;
     }
 }

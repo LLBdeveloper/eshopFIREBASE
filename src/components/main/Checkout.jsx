@@ -128,28 +128,28 @@ function Checkout() {
                         <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
                     </div>
                     ) : (
-                    <Container  className="container bg-white p-5 m-5 border border-dark border-5 rounded-5 text-center " >
-                        <h1 className='text-center border border-warning border-5 rounded m-5 p-3  fw-bold '>CHECKOUT</h1>
+                    <Container  className="container bg-warning p-3 m-2 border border-dark border-5 rounded-5 text-center" style={{width:'90%'}} >
+                        <h1 className='text-center border border-dark shadow border-5 rounded m-2 p-2  fw-bold '>CHECKOUT</h1>
                         <div className='m-5 p-5'>
-                            <h3 className='h3'>Complete the Fields</h3>
+                            <h3 className='h3 '>Complete the Fields</h3>
                             <Form onSubmit={handleBuy}>
                                 <Form.Group className="mb-3" controlId="name">
-                                    <FloatingLabel  label="Full name" className="m-3 shadow">
+                                    <FloatingLabel  label="Name" className="m-3 shadow">
                                         <Form.Control type="text" placeholder="Example name"  value={buyerName} onChange={(e) => setBuyerName(e.target.value)} required/>
                                     </FloatingLabel>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="email">
-                                    <FloatingLabel  label="Email address" className="m-3 shadow" >
+                                    <FloatingLabel  label="Email" className="m-3 shadow" >
                                         <Form.Control type="email" placeholder="name@example.com" required value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)}/>
                                     </FloatingLabel>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="phone">
-                                    <FloatingLabel  label="Phone number" className="m-3 shadow" >
+                                    <FloatingLabel  label="Phone" className="m-3 shadow" >
                                         <Form.Control type="text" placeholder="1140202040" value={buyerPhone} required onChange={(e) => setBuyerPhone(e.target.value)}/>
                                     </FloatingLabel>
                                 </Form.Group>
                                 <div className='mt-5'>
-                                    <Link to="/" className="btn btn-warning m-1 p-4 text-white">See more</Link>
+                                    <Link to="/" className="btn btn-dark m-1 p-4 text-white">See more</Link>
 
                                     {cart.length === 0 ? (
                                         <Button className="btn btn-secondary m-1 p-4 ps-5 pe-5" type="button" onClick={() => alert('No tienes productos en el carrito')}>Buy</Button>
@@ -162,20 +162,24 @@ function Checkout() {
                         <div>
                             <h3 className='m-5 h3'>Products Details</h3>
                             {cart.map(item => (
-                                <div key={item.id} className="border border-success  p-2">
-                                    <img id='imgCheckoutHide' src={item.img} alt="img producto" className='rounded-circle m-1' style={{ maxWidth: '50px'}} />
-                                    {item.name} - x{item.quantity} - ${item.price * item.quantity}
+                                <div key={item.id}  className="border border-success  rounded border-4 p-2 text-center d-flex justify-content-center align-items-center">
                                     
-                                    <div id='buttonCheckoutBlock' className='ms-1' style={{display:'inline'}}>
-                                        <Button className="btn btn-secondary " onClick={() => handleRemoveItem(item.id)}>X</Button>
-                                        <Button variant="danger" className='m-1' onClick={()=> decrementQuantity(item.id)}>
-                                            -
-                                        </Button>
-                                        <Button variant="success" className='m-1' onClick={()=> incrementQuantity(item.id, item.stock)}>
-                                            +
-                                        </Button>
+                                    <div className='me-auto'>
+                                        <img id='imgCheckoutHide' src={item.img} alt="img producto" className='rounded-circle m-1' style={{ maxWidth: '50px'}} />
+                                    </div>
+
+                                    <div className='me-auto'>
+                                        {item.name} - x{item.quantity} - ${item.price * item.quantity}
                                     </div>
                                     
+                                    <div id='buttonCheckoutBlock' className='ms-1 me-auto' >
+                                        <Button variant="danger" className='m-1' onClick={()=> decrementQuantity(item.id)}>-</Button>
+                                        <Button variant="success" className='m-1' onClick={()=> incrementQuantity(item.id, item.stock)}>+</Button>
+                                    </div>
+
+                                    <div className='ms-auto'>
+                                        <Button className="btn btn-secondary " onClick={() => handleRemoveItem(item.id)}>X</Button>
+                                    </div>
                                 </div>
                             ))}
                             <h2 className='m-5 fw-bold fs-1'>Total: $ {total}</h2>

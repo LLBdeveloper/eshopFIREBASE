@@ -61,11 +61,11 @@ function ContactForm() {
                         <h2 className=" m-5"> L o a d i n g  .   .   . </h2>                
                     </div>
                     ) : (
-                        <Container className='m-5 '>
-                            <h1 className="text-center m-5 fw-bold ">CONTACT US</h1>
+                        <Container className='m-5 bg-warning p-5 rounded border border-4 border-dark'>
+                            <h1 className="text-center m-3 fw-bold ">CONTACT US</h1>
                             <Form onSubmit={handleSubmit}>
-                                <Form.Group className="mb-3" controlId="fullName">
-                                    <Form.Label>Full Name</Form.Label>
+                                <Form.Group className="mb-3 " controlId="fullName">
+                                    <Form.Label >Full Name</Form.Label>
                                     <Form.Control
                                         type="text"
                                         placeholder="Enter your full name"
@@ -73,6 +73,7 @@ function ContactForm() {
                                         value={formData.fullName}
                                         onChange={handleChange}
                                         required
+                                        className='shadow'
                                     />
                                 </Form.Group>
 
@@ -85,6 +86,7 @@ function ContactForm() {
                                         value={formData.tel}
                                         onChange={handleChange}
                                         required
+                                        className='shadow'
                                     />
                                 </Form.Group>
 
@@ -97,6 +99,7 @@ function ContactForm() {
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
+                                        className='shadow'
                                     />
                                 </Form.Group>
 
@@ -113,7 +116,7 @@ function ContactForm() {
                                     />
                                 </Form.Group>
                                 
-                                <Button variant="success" type="submit" className="d-block mx-auto m-5 p-4 rounded-5">
+                                <Button variant="success" type="submit" className=" shadow d-block mx-auto m-5 p-4 rounded-5">
                                     <p className='fs-3 fw-bold'>Submit !</p>
                                 </Button>
                             </Form>

@@ -1,3 +1,17 @@
+
+@media screen and (max-width: 390px) {
+    .titleNavBar {
+        display: none;
+        }
+    }
+
+@media screen and (max-width: 790px) {
+    #categoryHide {
+        display: none;
+        }
+    }
+    
+
 @media screen and (max-width: 790px) {
     #categoryHide {
         display: none;
