@@ -73,9 +73,8 @@ function FooterComponent() {
                     
                 </div>
                 </div>
-
-                <div className="row mt-5 border border-warning">
-                    <div className="col-12 d-flex  justify-content-center">
+                <div className="row mt-5 border border-2 border-warning">
+                    <div className=" col-12 d-flex  justify-content-center  ">
                         <Link to='/' onClick={scrollToTop}>
                             <img className='mb-5 mt-5' src="https://firebasestorage.googleapis.com/v0/b/eshopreactcoder2.appspot.com/o/cifrado.png?alt=media&token=d067a5e5-357e-4fca-86ab-ab4d71683a92" alt="Logo" style={{ maxHeight: '100px' }} />
                         </Link>

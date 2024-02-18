@@ -42,7 +42,7 @@ function CartModal() {
                     {cart.length === 0 && (<div className='text-center m-5'><h2 className='fs-1 fw-bold text-danger shadow'>YOUR CART IS EMPTY</h2></div>)}
 
                     {cart.map(item => (
-                            <Container key={item.id} className="border border-success rounded m-4 p-5 text-center d-flex justify-content-center align-items-center  ">
+                            <Container key={item.id} className="border border-success border-3 rounded m-4 p-5 text-center d-flex justify-content-center align-items-center  ">
                                 <div className='me-auto' >
                                     <Button  variant="danger" className="rounded-circle me-1" onClick={() => removeItem(item.id)}>
                                             X
@@ -93,3 +93,6 @@ function CartModal() {
 }
 
 export default CartModal;
+
+
+
