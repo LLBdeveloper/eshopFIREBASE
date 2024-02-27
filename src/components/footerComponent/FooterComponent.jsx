@@ -82,7 +82,7 @@ function FooterComponent() {
                 </div>
                 <div className="row">
                     <div className="col-12 text-center mt-3">
-                        <p>Powered by WEB MASTER STUDIO ® | Copyright 2024 © - Todos los Derechos Reservados - Powered by React</p>
+                        <p>Powered by WEB MASTER STUDIO ® | Copyright 2024 © - Todos los Derechos Reservados</p>
                     </div>
                 </div>
             </div>
